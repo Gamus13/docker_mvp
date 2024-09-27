@@ -9,7 +9,10 @@ use App\Services\WebToPdfService;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
 use App\Jobs\ProcessUsersExtraction;
+use Illuminate\Support\Facades\Log;
 use App\Models\Userpdf;
+use App\Models\Embeddingsusers;
+
 
 class UserPdfController extends Controller
 {
@@ -38,10 +41,21 @@ class UserPdfController extends Controller
         // Déclenche le processus de traitement en arrière-plan
         Queue::push(new ProcessUsersExtraction($userpdf));
 
-        return response()->json([
-            'message' => 'Fichier uploadé et traitement démarré.',
-            'file_path' => $fileUrl,
-            'file_name' => $file->getClientOriginalName(),
-        ]);
+        // Appeler la méthode index pour récupérer toutes les colonnes 'document'
+        return $this->index();
     }
+
+    public function index()
+    {
+        // Récupérer tout le contenu de la colonne 'document' de la table 'embeddingsurl'
+        $datausers = Embeddingsusers::pluck('document'); // Récupère uniquement la colonne 'document'
+
+        // Ajouter un log pour vérifier que les données ont bien été récupérées
+        Log::info('Index: Documents récupérés depuis la base de données.', ['datausers' => $datausers]);
+
+        // Rediriger vers createContext en passant les documents dans la session
+        return redirect()->route('documents.createContext')
+                        ->with('datausers', $datausers);
+    }
+
 }

@@ -22,9 +22,11 @@ Route::post('/objet-document', [ObjetDocumentController::class, 'store']);
 Route::post('/fileusers', [UserPdfController::class, 'upload']);
 
 Route::post('/convert-url-to-pdf', [UrlPdfController::class, 'convert']);
+Route::get('/pdfs', [UrlPdfController::class, 'index'])->name('pdfs.index');
+
 
 // stocker les donnees json dans le tableau json
 Route::post('/user-documents', [UserDocumentController::class, 'store']);
 // retourner les donnees json dans le tableau en fonction de l'objet du document
 Route::get('/documents/{key}', [UserDocumentController::class, 'show'])->name('documents.show');
-
+Route::get('/create-context', [UserDocumentController::class, 'createContext'])->name('documents.createContext');
