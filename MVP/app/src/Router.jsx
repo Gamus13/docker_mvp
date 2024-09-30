@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RegisteList from './pages/RegisteList';
-import Features from './pages/features';
+import Features from './pages/Features';
 
 const router = createBrowserRouter([
   {

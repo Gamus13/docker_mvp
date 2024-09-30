@@ -6,6 +6,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\UrlPdfController;
 use App\Http\Controllers\ObjetDocumentController;
 use App\Http\Controllers\UserPdfController;
+use App\Http\Controllers\PdfGeneratorController;
 use App\Http\Controllers\UserDocumentController;
 
 
@@ -30,3 +31,8 @@ Route::post('/user-documents', [UserDocumentController::class, 'store']);
 // retourner les donnees json dans le tableau en fonction de l'objet du document
 Route::get('/documents/{key}', [UserDocumentController::class, 'show'])->name('documents.show');
 Route::get('/create-context', [UserDocumentController::class, 'createContext'])->name('documents.createContext');
+
+
+// Route::get('/generate-pdf/{documentId}', [PdfGeneratorController::class, 'generatePdf']);
+Route::get('/lettre-licenciement', [PdfGeneratorController::class, 'showLettreLicenciement'])->name('lettre.licenciement');
+Route::get('/lettre-licenciement', [PdfGeneratorController::class, 'generatePDF']);

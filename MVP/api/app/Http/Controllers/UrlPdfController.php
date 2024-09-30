@@ -27,34 +27,6 @@ class UrlPdfController extends Controller
         $this->webToPdfService = $webToPdfService;
     }
 
-    // public function convert(Request $request)
-    // {
-    //     $url = $request->input('url');
-    //     $result = $this->webToPdfService->convertUrlToPdf($url);
-
-    //     if (!is_array($result)) {
-    //         return response()->json(['error' => 'Unexpected response format'], 500);
-    //     }
-
-    //     if (isset($result['error']) && $result['error']) {
-    //         return response()->json(['error' => $result['message']], 500);
-    //     }
-
-    //     // Créez une nouvelle instance de UrlPdf
-    //     $urlPdf = UrlPdf::create([
-    //         'pdf_path' => $result['file_path'] ?? '',
-    //         'title' => $result['file_url'] ?? '',
-    //     ]);
-
-    //     // Déclenche le processus de traitement en arrière-plan
-    //     Queue::push(new ProcessTextExtraction($urlPdf));
-
-    //     return response()->json([
-    //         'message' => $result['message'] ?? 'Conversion successful',
-    //         'file_path' => $result['file_path'] ?? '',
-    //         'file_url' => $result['file_url'] ?? ''
-    //     ]);
-    // }
     public function convert(Request $request)
     {
         $url = $request->input('url');

@@ -6,9 +6,9 @@ import LongTextInput from './LongTextInput'
 function Features() {
     return (
         <>
+        <LongTextInput/>
         <URLInput/>
         <FileUpload/>
-        <LongTextInput/>
         </>
     )
 }
