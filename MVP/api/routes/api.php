@@ -35,4 +35,7 @@ Route::get('/create-context', [UserDocumentController::class, 'createContext'])-
 
 // Route::get('/generate-pdf/{documentId}', [PdfGeneratorController::class, 'generatePdf']);
 Route::get('/lettre-licenciement', [PdfGeneratorController::class, 'showLettreLicenciement'])->name('lettre.licenciement');
-Route::get('/lettre-licenciement', [PdfGeneratorController::class, 'generatePDF']);
+Route::get('/lettre-licenciement', [PdfGeneratorController::class, 'generatePDFFromFinalPdfUser']);
+
+Route::get('/generate-pdf/{id}', [PdfGeneratorController::class, 'getCorrectedJson']);
+Route::get('/cleaned-json', [PdfGeneratorController::class, 'generatePDF']);

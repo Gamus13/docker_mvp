@@ -73,7 +73,7 @@
     <!-- Signature -->
     <div class="signature">
         <p><strong>{{ $signature }}</strong><br>
-        {{ $poste_responsable }}</p>
+        </p>
     </div>
 </body>
 </html>
