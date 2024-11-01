@@ -23,6 +23,13 @@ class Embeddingsusers extends Model
         'document',
         'cmetadata',
         'custom_id',
-        'uuid'
+        'uuid',
+        'user_id'
     ];
+
+    // Relation avec l'utilisateur
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

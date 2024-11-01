@@ -27,28 +27,42 @@ class ObjetDocumentController extends Controller
         $this->documentUserRepository = $documentUserRepository;
     }
 
+    // method to store the document type information
     public function store(Request $request)
     {
+        // Valider les données entrantes
         $validatedData = $request->validate([
             'document_type' => 'required|string',
         ]);
 
+        // Obtenir l'utilisateur connecté
+        $user = $request->user();
+
+        // Vérifiez si l'utilisateur est authentifié
+        if (!$user) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        // Créer le contexte dynamique
         $context = $this->createDynamicContext($validatedData['document_type']);
         $response = $this->askQuestion($context);
         $ai_response_content = $response['choices'][0]['message']['content'];
 
-        $objetDocument = ObjetDocument::create([
+        // Créer un document associé à l'utilisateur
+        $objetDocument = $user->documents()->create([
             'document_type' => $validatedData['document_type'],
             'ai_response' => $ai_response_content,
         ]);
 
-        ProcessAIResponseJob::dispatch($ai_response_content, $this->documentUserRepository);
+        // Traiter la réponse de l'IA avec l'ID de l'utilisateur
+        ProcessAIResponseJob::dispatch($ai_response_content, $user->id);
 
+        // Rediriger avec un message de succès
         return redirect()->route('documents.show', ['key' => $validatedData['document_type']])
-        ->with('success', 'Document saved successfully')
-        ->with('document', $objetDocument);
-
+            ->with('success', 'Document saved successfully')
+            ->with('document', $objetDocument);
     }
+
 
 
 

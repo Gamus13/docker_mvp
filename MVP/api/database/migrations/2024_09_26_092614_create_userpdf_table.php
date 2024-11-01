@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('userpdf', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Ajoutez cette ligne
             $table->string('userpdf_path');
             $table->string('usertitle');
             $table->timestamps();

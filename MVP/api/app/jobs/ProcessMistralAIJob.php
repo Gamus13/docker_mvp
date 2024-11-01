@@ -1,6 +1,7 @@
 <?php
 
 
+
 namespace App\Jobs;
 
 use App\Models\FinalDataUser;
@@ -20,15 +21,18 @@ class ProcessMistralAIJob implements ShouldQueue
 
     protected $context;
     protected $chat_model = 'open-mistral-7b'; // Modèle de chat
+    protected $userId; // Ajouter la propriété userId
 
     /**
      * Créer une nouvelle instance du Job.
      *
      * @param string $context
+     * @param int $userId
      */
-    public function __construct($context)
+    public function __construct($context, $userId)
     {
         $this->context = $context;
+        $this->userId = $userId; // Initialiser userId
     }
 
     /**
@@ -55,7 +59,7 @@ class ProcessMistralAIJob implements ShouldQueue
 
         // Construction du template pour l'API Mistral
         $system_template = <<<EOT
-        Utilisez le JSON ci-dessous comme modèle et remplissez chaque champ avec les informations pertinentes du contexte fourni si tu ne trouve pas d'information n'invente rien marque juste a remplir.
+        Utilisez le JSON ci-dessous comme modèle et remplissez chaque champ avec les informations pertinentes du contexte fourni si tu ne trouves pas d'information n'invente rien, marque juste "à remplir".
         Assurez-vous que le JSON retourné soit correctement formaté, sans texte supplémentaire, qu'il soit complet et qu'il n'y ait aucun caractère d'échappement (comme \) utilisé.
 
         Le JSON doit être entièrement complété sans aucun texte partiel ou caractères non autorisés.
@@ -103,7 +107,7 @@ class ProcessMistralAIJob implements ShouldQueue
 
         // Récupérer la réponse
         $result = $response->json();
-        Log::info('Réponse de Mistral AI 1', ['result' => $result]);
+        Log::info('Réponse de Mistral AI', ['result' => $result]);
 
         // Vérifier la réponse et extraire le contenu
         if (isset($result['choices']) && count($result['choices']) > 0) {
@@ -120,12 +124,13 @@ class ProcessMistralAIJob implements ShouldQueue
                     // Stocker la réponse dans la base de données
                     try {
                         FinalDataUser::create([
-                            'finaldatausers' => $final_response_clean
+                            'finaldatausers' => $final_response_clean,
+                            'user_id' => $this->userId // Utiliser la propriété userId ici
                         ]);
 
                         // Dispatch le nouveau job après le succès
-                        ProcessAnotherJob::dispatch($final_response_clean);
-                        // Log::info('Réponse stockée avec succès dans finaldatausers', ['response' => $final_response_clean]);
+                        ProcessAnotherJob::dispatch($final_response_clean, $this->userId); // Associer l'ID utilisateur
+                        Log::info('Réponse stockée avec succès dans finaldatausers', ['response' => $final_response_clean]);
                     } catch (\Exception $e) {
                         Log::error('Échec de l\'enregistrement de la réponse dans finaldatausers', ['error' => $e->getMessage()]);
                     }
@@ -140,6 +145,5 @@ class ProcessMistralAIJob implements ShouldQueue
         }
     }
 }
-
 
 

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('waitto_pdf', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->text('finalpdfusers');
             $table->timestamps();
         });

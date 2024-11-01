@@ -20,6 +20,7 @@ class UrlPdf extends Model
         'id', // UUID
         'pdf_path',
         'title',
+        'user_id',
     ];
 
     protected static function booted()
@@ -29,5 +30,11 @@ class UrlPdf extends Model
                 $model->id = Str::uuid()->toString(); // Génération d'un UUID
             }
         });
+    }
+
+    // Relation avec l'utilisateur
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

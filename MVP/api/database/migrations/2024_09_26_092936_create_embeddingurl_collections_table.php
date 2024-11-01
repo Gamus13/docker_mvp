@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('embeddingurl_collections', function (Blueprint $table) {
             $table->uuid('uuid')->primary();
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Ajout de la relation
             $table->string('name');
             $table->jsonb('cmetadata')->nullable(); // Permettre NULL pour cmetadata
             $table->timestamps();

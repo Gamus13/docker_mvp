@@ -47,7 +47,7 @@ const LongTextInput = () => {
         // Traitement de la réponse, par exemple afficher un message de succès
         console.log('Réponse du serveur:', response.data);
       } catch (error) {
-        console.error('Erreur lors de l\'envoi des données:', error);
+        console.error("Erreur lors de l'envoi des données:", error);
       }
     }
   };
@@ -55,15 +55,17 @@ const LongTextInput = () => {
   return (
     <div className="w-full max-w-md mx-auto">
       <form className="flex flex-col space-y-4">
-        <label className="text-lg font-medium">Choisissez le type de document :</label>
+        <label className="text-sm font-medium">Choose the document type :</label>
         <select
           value={selectedOption}
           onChange={handleSelection} // Déclencher l'envoi sur le changement d'option
-          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-black"
         >
-          <option value="">Sélectionnez un type de document</option>
+          <option value="" className="text-black">
+            Select a document type
+          </option>
           {documentTypes.map((type, index) => (
-            <option key={index} value={type}>
+            <option key={index} value={type} className="text-black">
               {type}
             </option>
           ))}

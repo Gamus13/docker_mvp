@@ -5,6 +5,7 @@ namespace App\Jobs;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use App\Http\Controllers\PdfGeneratorController;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
@@ -12,21 +13,24 @@ use Illuminate\Support\Facades\Log;
 use App\Models\FinalPdfUser;
 use App\Models\WaitToPdf; // Modèle pour la table waitto_pdf
 
+
 class ProcessResponseJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $response;
+    protected $userId;  // Ajout de l'ID utilisateur
 
     /**
      * Créer une nouvelle instance du Job.
      *
      * @param mixed $response
      */
-    public function __construct($response)
+    public function __construct($response, $userId)
     {
         $this->response = $response;
-        Log::info('ProcessResponseJob instancié', ['response' => $this->response]);
+        $this->userId = $userId;  // Stocke l'ID utilisateur
+        Log::info('ProcessResponseJob instancié', ['response' => $this->response, 'userId' => $this->userId]);
     }
 
     /**
@@ -36,10 +40,15 @@ class ProcessResponseJob implements ShouldQueue
      */
     public function handle()
     {
-        Log::info('ProcessResponseJob démarré', ['response' => $this->response]);
+        Log::info('ProcessResponseJob démarré', ['response' => $this->response, 'userId' => $this->userId]);
 
         // Récupérer les dernières données de la colonne 'finalpdfusers' de la table 'waitto_pdf'
-        $lastFinalPdf = WaitToPdf::latest()->first();
+        // $lastFinalPdf = WaitToPdf::latest()->first();
+
+        $lastFinalPdf = WaitToPdf::where('user_id', $this->userId)
+        ->orderBy('created_at', 'desc')
+        ->first();
+
 
         if ($lastFinalPdf) {
             $response = $lastFinalPdf->finalpdfusers;  // Utiliser le contenu de 'finalpdfusers'
@@ -92,9 +101,19 @@ class ProcessResponseJob implements ShouldQueue
 
             // Sauvegarder le contenu extrait dans la base de données
             FinalPdfUser::create([
-                'finalpdf' => $content // On ne stocke que le "content" ici
+                'finalpdf' => $content, // On ne stocke que le "content" ici
+                'user_id' => $this->userId // Associer l'ID utilisateur
             ]);
 
+            // *** Appeler la méthode du contrôleur ici ***
+            try {
+                $pdfController = new PdfGeneratorController();  // Créer une instance du contrôleur
+                $pdfController->generateMultiplePdfsFromTemplates($this->userId);   // Appeler la méthode du contrôleur
+
+                Log::info('Méthode generatePDFFromFinalPdfUser appelée avec succès.');
+            } catch (\Exception $e) {
+                Log::error('Erreur lors de l\'appel à la méthode generatePDFFromFinalPdfUser : ' . $e->getMessage());
+            }
 
         } else {
             Log::warning('Aucune réponse valide retournée par Mistral AI');

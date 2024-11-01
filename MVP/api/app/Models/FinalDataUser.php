@@ -11,5 +11,10 @@ class FinalDataUser extends Model
 
     protected $table = 'finaldatausers';
 
-    protected $fillable = ['finaldatausers']; // Les champs qui peuvent être remplis
+    protected $fillable = ['finaldatausers', 'user_id']; // Les champs qui peuvent être remplis
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

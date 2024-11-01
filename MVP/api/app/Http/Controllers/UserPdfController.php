@@ -36,6 +36,7 @@ class UserPdfController extends Controller
         $userpdf = Userpdf::create([
             'userpdf_path' => storage_path('app/public/' . $filePath),
             'usertitle' => $file->getClientOriginalName(),
+            'user_id' => $request->user()->id, // Associez à l'utilisateur connecté
         ]);
 
         // Déclenche le processus de traitement en arrière-plan

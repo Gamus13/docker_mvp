@@ -15,7 +15,7 @@ class Embeddingurl_collections extends Model
     protected $primaryKey = 'uuid';
     protected $table = 'embeddingurl_collections';
     protected $fillable = [
-        "name", "cmetadata", "uuid"
+        "name", "cmetadata", "uuid", "user_id"
     ];
 
     protected static function booted()
@@ -23,5 +23,11 @@ class Embeddingurl_collections extends Model
         static::creating(function ($model) {
             $model->uuid = Uuid::uuid4()->toString();
         });
+    }
+
+    // Relation avec l'utilisateur
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

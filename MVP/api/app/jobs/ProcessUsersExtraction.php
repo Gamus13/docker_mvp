@@ -59,7 +59,9 @@ class ProcessUsersExtraction implements ShouldQueue
                 'cmetadata' => json_encode([
                     "total_token" => 0,
                     "title" => $this->userpdf->usertitle
-                ])
+                ]),
+
+                'user_id' => $this->userpdf->user_id, // Associer à l'utilisateur
             ]);
             Log::info("Created Embeddingusers_collections with UUID: " . $embeddingusers_collections->uuid);
 
@@ -117,7 +119,9 @@ class ProcessUsersExtraction implements ShouldQueue
                             "page" => $pageNumber + 1,
                             "path" => $pdf_path,
                             "title" => $this->userpdf->usertitle
-                        ])
+                        ]),
+
+                        'user_id' => $this->userpdf->user_id,
                     ]);
 
                     Log::info("Created embedding for page " . ($pageNumber + 1));

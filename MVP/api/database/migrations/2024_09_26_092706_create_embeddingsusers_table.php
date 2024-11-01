@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('embeddingsusers', function (Blueprint $table) {
             $table->uuid("uuid")->primary();
             $table->uuid('embeddingusers_collections_id');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Ajout de la relation
             $table->uuid("custom_id")->nullable();
             $table->json("cmetadata");
             $table->text("document");

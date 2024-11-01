@@ -35,4 +35,16 @@ return [
         ],
     ],
 
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_SECRET_ID'),
+        'redirect' => env('GOOGLE_REDIRECT'),
+    ],
+
+    'ilovepdf' => [
+        'public_key' => env('ILOVEPDF_PUBLIC_KEY'),
+        'secret_key' => env('ILOVEPDF_SECRET_KEY'),
+    ],
+
+
 ];

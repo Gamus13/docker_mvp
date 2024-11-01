@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('objet_documents', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            // $table->string('user_message');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('document_type');
             $table->text('ai_response')->nullable();
             $table->timestamps();

@@ -13,5 +13,11 @@ class InformationUser extends Model
 
     protected $fillable = [
         'expediteur_info', // Utiliser une seule colonne
+        'user_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

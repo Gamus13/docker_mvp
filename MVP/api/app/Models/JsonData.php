@@ -13,5 +13,10 @@ class JsonData extends Model
     protected $table = 'jsonaddata';
 
     // Indiquez les attributs qui peuvent être assignés en masse
-    protected $fillable = ['jsondocxusers'];
+    protected $fillable = ['jsondocxusers', 'user_id'];
+
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 }

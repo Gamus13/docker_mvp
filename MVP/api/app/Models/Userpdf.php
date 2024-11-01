@@ -20,6 +20,7 @@ class Userpdf extends Model
         'id', // UUID
         'userpdf_path',
         'usertitle',
+        'user_id',
     ];
 
     protected static function booted()
@@ -29,5 +30,11 @@ class Userpdf extends Model
                 $model->id = Str::uuid()->toString(); // Génération d'un UUID
             }
         });
+    }
+
+    // Relation avec l'utilisateur
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

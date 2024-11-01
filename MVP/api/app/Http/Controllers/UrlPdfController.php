@@ -27,8 +27,39 @@ class UrlPdfController extends Controller
         $this->webToPdfService = $webToPdfService;
     }
 
+    // public function convert(Request $request)
+    // {
+    //     $url = $request->input('url');
+    //     $result = $this->webToPdfService->convertUrlToPdf($url);
+
+    //     if (!is_array($result)) {
+    //         return response()->json(['error' => 'Unexpected response format'], 500);
+    //     }
+
+    //     if (isset($result['error']) && $result['error']) {
+    //         return response()->json(['error' => $result['message']], 500);
+    //     }
+
+    //     // Créez une nouvelle instance de UrlPdf
+    //     $urlPdf = UrlPdf::create([
+    //         'pdf_path' => $result['file_path'] ?? '',
+    //         'title' => $result['file_url'] ?? '',
+    //     ]);
+
+    //     // Déclenche le processus de traitement en arrière-plan
+    //     Queue::push(new ProcessTextExtraction($urlPdf));
+
+    //     // Appeler la méthode index pour récupérer toutes les colonnes 'document'
+    //     return $this->index();
+    // }
+
     public function convert(Request $request)
     {
+        // Valider l'URL entrée
+        $request->validate([
+            'url' => 'required|url', // Validation de l'URL
+        ]);
+
         $url = $request->input('url');
         $result = $this->webToPdfService->convertUrlToPdf($url);
 
@@ -44,6 +75,7 @@ class UrlPdfController extends Controller
         $urlPdf = UrlPdf::create([
             'pdf_path' => $result['file_path'] ?? '',
             'title' => $result['file_url'] ?? '',
+            'user_id' => $request->user()->id, // Associez à l'utilisateur connecté
         ]);
 
         // Déclenche le processus de traitement en arrière-plan
@@ -52,6 +84,7 @@ class UrlPdfController extends Controller
         // Appeler la méthode index pour récupérer toutes les colonnes 'document'
         return $this->index();
     }
+
 
     public function index()
     {

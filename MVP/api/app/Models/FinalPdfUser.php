@@ -12,5 +12,5 @@ class FinalPdfUser extends Model
     protected $table = 'finalpdfusers';
 
     // Autoriser le champ 'finalpdf' pour l'insertion de masse
-    protected $fillable = ['finalpdf'];
+    protected $fillable = ['finalpdf', 'user_id'];
 }

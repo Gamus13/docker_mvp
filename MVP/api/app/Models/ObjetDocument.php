@@ -12,12 +12,18 @@ class ObjetDocument extends Model
 
     public $incrementing = false;
     protected $keyType = 'string';
-    protected $fillable = ['id', 'document_type', 'ai_response'];
+    protected $fillable = ['id', 'document_type', 'ai_response', 'user_id'];
 
     protected static function booted()
     {
         static::creating(function ($model) {
             $model->id = (string) Str::uuid(); // Génération d'un UUID
         });
+    }
+
+    // Relation avec l'utilisateur
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

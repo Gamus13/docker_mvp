@@ -58,7 +58,9 @@ class ProcessTextExtraction implements ShouldQueue
                 'cmetadata' => json_encode([
                     "total_token" => 0,
                     "title" => $this->urlPdf->title
-                ])
+                ]),
+
+                'user_id' => $this->urlPdf->user_id, // Associer à l'utilisateur
             ]);
             Log::info("Created embeddingurl_collections with ID: " . $embeddingurl_collections->id);
 
@@ -116,7 +118,9 @@ class ProcessTextExtraction implements ShouldQueue
                             "page" => $pageNumber + 1,
                             "path" => $pdf_path,
                             "title" => $this->urlPdf->title
-                        ])
+                        ]),
+
+                        'user_id' => $this->urlPdf->user_id, // Associer à l'utilisateur
                     ]);
 
                     Log::info("Created embedding for page " . ($pageNumber + 1));

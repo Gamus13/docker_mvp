@@ -3,13 +3,17 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, HasApiTokens;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'google_id',
+        'role',
     ];
 
     /**
@@ -43,5 +49,78 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Relation avec les documents
+    public function documents(): HasMany
+    {
+        return $this->hasMany(ObjetDocument::class);
+    }
+
+    // Relation avec les PDF
+    public function urls(): HasMany
+    {
+        return $this->hasMany(UrlPdf::class);
+    }
+
+
+    // Relation avec les collections d'embedding
+    public function embeddingUrlCollections(): HasMany
+    {
+        return $this->hasMany(Embeddingurl_collections::class);
+    }
+
+    // Relation avec les embeddings
+    public function embeddingsUrls(): HasMany
+    {
+        return $this->hasMany(Embeddingsurl::class);
+    }
+
+    // Relation avec les PDFs de l'utilisateur
+    public function userPdfs(): HasMany
+    {
+        return $this->hasMany(Userpdf::class);
+    }
+
+    public function embeddings(): HasMany
+    {
+        return $this->hasMany(Embeddingsusers::class);
+    }
+
+    public function embeddingUsersCollections(): HasMany
+    {
+        return $this->hasMany(Embeddingusers_collections::class);
+    }
+
+    // public function jsonData(): HasMany
+    // {
+    //     return $this->hasMany(JsonData::class);
+    // }
+
+    public function finalData(): HasMany
+    {
+        return $this->hasMany(FinalDataUser::class);
+    }
+
+    public function waittoPdfs(): HasMany
+    {
+        return $this->hasMany(WaittoPdf::class);
+    }
+
+    // Relation avec le modèle InformationUser
+    public function informationUsers()
+    {
+        return $this->hasMany(InformationUser::class);
+    }
+
+    public function updatedPdfDocuments()
+    {
+        return $this->hasMany(UpdatedPdfDocument::class);
+    }
+
+    // Relation avec le modèle PdfRecord
+    public function pdfRecords()
+    {
+        return $this->hasMany(PdfRecord::class);
     }
 }
