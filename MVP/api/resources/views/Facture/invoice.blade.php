@@ -31,7 +31,7 @@
                     <div class="hr"></div>
                     <div class="invoice-head-middle">
                         <div class="invoice-head-middle-left text-start">
-                            <p><span class="text-bold">Date de facture</span>: {{ $data['invoice']['date'] }}</p>
+                            <p><span class="text-bold">Date de facture</span>: {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
                         </div>
                         <div class="invoice-head-middle-right text-end">
                             <p><span class="text-bold">Invoice No:</span> {{ $data['invoice']['invoice_number'] }}</p>
@@ -76,9 +76,9 @@
                                     <tr>
                                         <td>{{ $item['service'] }}</td>
                                         <td>{{ $item['description'] }}</td>
-                                        <td>{{ $item['rate'] }}</td>
+                                        <td>{{ $item['rate'] }}$</td>
                                         <td>{{ $item['quantity'] }}</td>
-                                        <td class="text-end">{{ $item['amount'] }}</td>
+                                        <td class="text-end">{{ $item['amount'] }}$</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -86,15 +86,15 @@
                         <div class="invoice-body-bottom">
                             <div class="invoice-body-info-item border-bottom">
                                 <div class="info-item-td text-end text-bold">Sub Total(excl. tax):</div>
-                                <div class="info-item-td text-end">{{ $data['invoice']['totals']['subtotal'] }}</div>
+                                <div class="info-item-td text-end">{{ $data['invoice']['totals']['subtotal'] }}$</div>
                             </div>
                             <div class="invoice-body-info-item border-bottom">
                                 <div class="info-item-td text-end text-bold">Tax:</div>
-                                <div class="info-item-td text-end">{{ $data['invoice']['totals']['tax'] }}</div>
+                                <div class="info-item-td text-end">{{ $data['invoice']['totals']['tax'] }}%</div>
                             </div>
                             <div class="invoice-body-info-item">
                                 <div class="info-item-td text-end text-bold">Total (incl. tax):</div>
-                                <div class="info-item-td text-end">{{ $data['invoice']['totals']['total'] }}</div>
+                                <div class="info-item-td text-end">{{ $data['invoice']['totals']['total'] }}$</div>
                             </div>
                         </div>
                     </div>

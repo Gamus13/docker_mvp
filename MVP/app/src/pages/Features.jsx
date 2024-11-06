@@ -5,6 +5,7 @@ import FileUpload from './FileUpload';
 import LongTextInput from './LongTextInput';
 import PdfUpdateModal from '../components/PdfUpdateModal';
 import LoadPdfButton from '../components/LoadPdfButton';
+import ParentIcon from '../components/ParentIcon';
 // import GoogleLoginButton from './GoogleLoginButton';
 
 function Features() {
@@ -12,14 +13,15 @@ function Features() {
     <>
       <div className="flex flex-col items-center justify-center w-full h-full p-4">
         {/* <h1 className='text-sm font-medium text-sky-400  mb-8'><strong>Generate your document</strong></h1> */}
-        <h1 className="text-2xl text-center font-bold text-sky-400 mb-8">
+        <h1 className="text-xl text-center font-bold text-sky-400 mb-8">
           <strong>Generate your document</strong>
         </h1>
 
         <LongTextInput className="w-full mb-4" />
         <URLInput className="w-full mb-4" />
         <FileUpload className="w-full mb-4" />
-        <PdfUpdateModal/>
+        <ParentIcon/>
+        {/* <PdfUpdateModal/> */}
         {/* <LoadPdfButton/> */}
         {/* <GoogleLoginButton className="w-full mb-4" /> */}
       </div>

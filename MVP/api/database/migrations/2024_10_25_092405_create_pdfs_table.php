@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('filename'); // Pour stocker le nom du fichier
             $table->string('path'); // Pour stocker le chemin du fichier
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Clé étrangère vers users
             $table->timestamps();
         });
     }

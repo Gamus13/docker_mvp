@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devis</title>
-    <link rel="stylesheet" href="{{ public_path('pdf/style.css') }}" >
+    <link rel="stylesheet" href="{{ asset('pdf/pdf6.css') }}">
+
 </head>
 
 <body>

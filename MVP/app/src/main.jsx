@@ -8,6 +8,9 @@ import AppContext from './utils/Context.jsx';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { UploadProvider } from './UploadContext.jsx';
 import { PdfProvider } from './contexts/PdfContext.jsx';
+// import { ToastContainer, toast } from 'react-toastify';
+import { ToastProvider } from './contexts/ToastContext';
+import 'react-toastify/dist/ReactToastify.css';
 
 const clientId = '1069436410892-pknlg3609jhvb823j3m8rbbu9eltre81.apps.googleusercontent.com';
 
@@ -19,9 +22,11 @@ createRoot(document.getElementById('root')).render(
         <PdfProvider>
           <AppContext>
             <UploadProvider>
-              <StrictMode>
-                <App />
-              </StrictMode>
+              <ToastProvider>
+                <StrictMode>
+                  <App />
+                </StrictMode>
+              </ToastProvider>
             </UploadProvider>
           </AppContext>
         </PdfProvider>

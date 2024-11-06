@@ -9,6 +9,7 @@ use App\Jobs\ProcessAIResponseJob;
 use App\Http\Repository\DocumentUserRepository; // Utilisez DocumentUserRepository
 use App\Models\ObjetDocument;
 use App\Http\Controllers\DocumentUserController;
+use App\Http\Controllers\UserDocumentController;
 
 
 class ObjetDocumentController extends Controller
@@ -58,10 +59,16 @@ class ObjetDocumentController extends Controller
         ProcessAIResponseJob::dispatch($ai_response_content, $user->id);
 
         // Rediriger avec un message de succès
-        return redirect()->route('documents.show', ['key' => $validatedData['document_type']])
-            ->with('success', 'Document saved successfully')
-            ->with('document', $objetDocument);
+        // return redirect()->route('documents.show', ['key' => $validatedData['document_type']])
+        //     ->with('success', 'Document saved successfully')
+        //     ->with('document', $objetDocument);
+        $controller = new UserDocumentController();
+        return $controller->show($validatedData['document_type']);
     }
+
+    //     // Instancier le contrôleur et appeler la méthode show
+        // $controller = new UserDocumentController();
+        // return $controller->show($validatedData['document_type']);
 
 
 

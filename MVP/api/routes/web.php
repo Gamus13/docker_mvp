@@ -94,51 +94,29 @@ Route::get('/devis', function () {
     return view('Devis.devis');
 });
 
-Route::get('/invoice', function () {
-    // Données fictives pour la facture
-    $date = date('d/m/Y'); // Date actuelle
-    $invoice_number = 'INV-12345';
-    $client_name = 'John Doe';
-    $client_address = '123 Main Street, Apt 4B';
-    $client_country = 'United States';
-
-    // Articles de la facture
+// la route fonctionne
+Route::get('/invoice3', function () {
     $items = [
-        [
-            'Service' => 'Web Development',
-            'description' => 'Development of a website',
-            'details' => 'Includes responsive design and SEO optimization',
-            'price' => 1000.00,
-            'amount' => 1000.00,
-        ],
-        [
-            'Service' => 'Graphic Design',
-            'description' => 'Creation of brand graphics',
-            'details' => 'Logo and business card design',
-            'price' => 500.00,
-            'amount' => 500.00,
-        ],
+        ['description' => 'Item 1', 'details' => 'Description of item 1', 'quantity' => 2, 'price' => 50, 'total' => 100],
+        ['description' => 'Item 2', 'details' => 'Description of item 2', 'quantity' => 1, 'price' => 75, 'total' => 75],
     ];
 
-    // Calcul des totaux
-    $subtotal = array_sum(array_column($items, 'amount'));
-    $tax = $subtotal * 0.10;
-    $grand_total = $subtotal + $tax;
+    // Variables pour le total
+    $subTotal = 175;
+    $tax = $subTotal * 0.10;
+    $dueTotal = $subTotal + $tax;
+    $grandTotal = $dueTotal;
+    $totalDue = $grandTotal;
 
-    // Retourner la vue avec les données
-    return view('invoice', compact(
-        'date',
-        'invoice_number',
-        'client_name',
-        'client_address',
-        'client_country',
-        'items',
-        'subtotal',
-        'tax',
-        'grand_total'
-    ));
+    return view('Facture.invoice3', compact('items', 'subTotal', 'tax', 'dueTotal', 'grandTotal', 'totalDue'));
+})->name('invoice.show');
+
+
+
+
+Route::get('/invoice2', function () {
+    return view('Facture.invoice2');
 });
-
 
 
 Route::get('/Licenciement', function () {
@@ -203,4 +181,9 @@ Route::get('/licenciement-modele', function () {
         'coordonnees_employe',
         'date'
     ));
+});
+
+
+Route::get('/devis2', function () {
+    return view('Devis.devis2');
 });

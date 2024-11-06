@@ -127,6 +127,30 @@
   opacity: 1;
 }
 
+/* style des icones */
+.icon {
+  display: inline-block;
+  color: #f7f3f3; /* Couleur bleue pour les icônes */
+  font-size: 2rem; /* Taille de l'icône */
+  cursor: pointer;
+  position: relative;
+}
+
+.icon:hover::after {
+  content: attr(title); /* Affiche le texte au survol */
+  position: absolute;
+  top: 100%; /* Juste en dessous de l'icône */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  margin-top: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 
   /* .relative:hover .absolute {
@@ -200,3 +224,89 @@
 
 /*  */
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.pdf-list {
+  margin-top: 20px;
+}
+
+.pdf-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.pdf-icon {
+  margin-right: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.pagination-dot {
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background-color: skyblue;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination-dot.active {
+  background-color: whitesmoke; /* Changez cette couleur pour le rond actif */
+}
+
+.choose-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.choose-button {
+  background-color: #4CAF50; /* Couleur verte */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.choose-button:hover {
+  background-color: #45a049; /* Couleur de survol */
+}

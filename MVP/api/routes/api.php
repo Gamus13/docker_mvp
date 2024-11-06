@@ -33,7 +33,9 @@ Route::get('/pdfs', [UrlPdfController::class, 'index'])->name('pdfs.index');
 // stocker les donnees json dans le tableau json
 Route::post('/user-documents', [UserDocumentController::class, 'store']);
 // retourner les donnees json dans le tableau en fonction de l'objet du document
-Route::get('/documents/{key}', [UserDocumentController::class, 'show'])->name('documents.show');
+//  Route::get('/documents/{key}', [UserDocumentController::class, 'show'])->name('documents.show');
+// Route::get('/documents/{key}', [UserDocumentController::class, 'show']);
+
 
 
 
@@ -59,7 +61,7 @@ Route::post('/google-login', [AuthController::class, 'handleGoogleLogin']);
 Route::post('/send-email', [MailSenderController::class, 'sendEmail']);
 Route::post('/send-emailcreate', [MailController::class, 'sendEmail']);
 Route::post('/upload', [UserPdfGenerateController::class, 'upload']);
-Route::get('/Userpdfs', [UserPdfGenerateController::class, 'index']);
+
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -76,6 +78,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users/total', [AuthController::class, 'getTotalUsers']);
     Route::get('/users', [AuthController::class, 'getAllUsers']);
 
+    Route::get('/documents/{key}', [UserDocumentController::class, 'show']);
+
+    Route::get('/Userpdfs', [UserPdfGenerateController::class, 'index']);
+
+    Route::get('/pdfs/user/{userId}', [PdfGeneratorController::class, 'getAllUserPdfs']);
 
     Route::get('/pdfs', [PdfGeneratorController::class, 'index'])->name('pdfs.index');
     Route::get('/pdfsupdate', [PdfGeneratorController::class, 'indexupdate'])->name('pdfs.indexupdate');

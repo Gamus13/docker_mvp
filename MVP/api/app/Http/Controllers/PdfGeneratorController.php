@@ -412,6 +412,14 @@ class PdfGeneratorController extends Controller
     }
 
 
+    // Méthode pour récupérer tous les PDFs créés par un utilisateur spécifique
+    public function getAllUserPdfs($userId)
+    {
+        // Récupère tous les PDFs associés à l'utilisateur
+        $pdfs = GeneratedPdf::where('user_id', $userId)->get();
 
+        // Retourne les PDFs en réponse JSON
+        return response()->json($pdfs);
+    }
 }
 
