@@ -11,6 +11,7 @@ import { PdfProvider } from './contexts/PdfContext.jsx';
 // import { ToastContainer, toast } from 'react-toastify';
 import { ToastProvider } from './contexts/ToastContext';
 import 'react-toastify/dist/ReactToastify.css';
+import { VisibilityProvider } from './contexts/VisibilityContext.jsx';
 
 const clientId = '1069436410892-pknlg3609jhvb823j3m8rbbu9eltre81.apps.googleusercontent.com';
 
@@ -22,11 +23,13 @@ createRoot(document.getElementById('root')).render(
         <PdfProvider>
           <AppContext>
             <UploadProvider>
-              <ToastProvider>
-                <StrictMode>
-                  <App />
-                </StrictMode>
-              </ToastProvider>
+              <VisibilityProvider>
+                <ToastProvider>
+                  <StrictMode>
+                    <App />
+                  </StrictMode>
+                </ToastProvider>
+              </VisibilityProvider>
             </UploadProvider>
           </AppContext>
         </PdfProvider>

@@ -1,41 +1,8 @@
-// import React, { useState } from 'react';
-// import { MdEdit } from 'react-icons/md';
-// import '../index.css';
-
-// const Icon3 = () => {
-//     const [isModalOpen, setIsModalOpen] = useState(false);
-
-//     const handleIconClick = () => {
-//         setIsModalOpen(true);
-//     };
-
-//     const closeModal = () => {
-//         setIsModalOpen(false);
-//     };
-
-//     return (
-//         <div>
-//             <div className="icon" title="Edit the document" onClick={handleIconClick}>
-//                 <MdEdit />
-//             </div>
-//             {isModalOpen && (
-//                 <div className="modal">
-//                     <div className="modal-content">
-//                         <h2>Modifier le document</h2>
-//                         <p>Ici, vous pouvez modifier les informations du document.</p>
-//                         <button onClick={closeModal}>Fermer</button>
-//                     </div>
-//                 </div>
-//             )}
-//         </div>
-//     );
-// };
-
-// export default Icon3;
 import React, { useState } from 'react';
 import { MdEdit } from 'react-icons/md'; // Icône d'édition
 // import ContactForm from './Pdfmailsend';
 import '../index.css';
+import PdfUpdateForm from './PdfUpdateForm';
 
 const Icon3 = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,7 +31,7 @@ const Icon3 = () => {
                         >
                             &times; {/* Icône de fermeture */}
                         </button>
-                        {/* <ContactForm />  */}
+                        <PdfUpdateForm/>
                     </div>
                 </div>
             )}

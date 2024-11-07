@@ -1,7 +1,9 @@
+
 import React, { useEffect, useState } from 'react';
 import axios from '../axios';
 import { MdInsertDriveFile } from 'react-icons/md';
-import PdfViewer from './PdfViewer'; // Importez le composant PdfViewer
+import PdfViewer from './PdfViewer';
+import { usePdfContext } from '../contexts/PdfContext'; // Importez le contexte PdfContext
 import '../index.css';
 
 const Icon2 = () => {
@@ -9,6 +11,9 @@ const Icon2 = () => {
     const [userId, setUserId] = useState(null); // État pour stocker l'ID de l'utilisateur connecté
     const [isModalOpen, setIsModalOpen] = useState(false); // État pour contrôler la modal
     const [currentIndex, setCurrentIndex] = useState(0); // Index du PDF actuellement affiché
+
+    // Utilisation du contexte
+    const { handleSelectModel } = usePdfContext();
 
     useEffect(() => {
         // Récupère les informations de l'utilisateur connecté
@@ -36,9 +41,11 @@ const Icon2 = () => {
         setCurrentIndex(index);
     };
 
-    // Fonction pour sélectionner un modèle (par exemple, en affichant une alerte)
-    const handleSelectModel = () => {
-        alert(`Vous avez choisi le modèle: ${pdfs[currentIndex].name}`);
+    // Fonction pour sélectionner un modèle et mettre à jour `pdfPath` dans le contexte
+    const selectModel = () => {
+        const selectedPdfPath = `http://localhost/storage/documents/${pdfs[currentIndex].name}`;
+        handleSelectModel(selectedPdfPath); // Met à jour le contexte avec le PDF sélectionné
+        setIsModalOpen(false); // Ferme la modal après la sélection
     };
 
     return (
@@ -79,7 +86,7 @@ const Icon2 = () => {
                         <div className="choose-button-container">
                             <button 
                                 className="choose-button" 
-                                onClick={handleSelectModel}
+                                onClick={selectModel} // Utilise la fonction `selectModel`
                             >
                                 Choose this model
                             </button>

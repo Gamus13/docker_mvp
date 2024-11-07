@@ -297,16 +297,16 @@
 }
 
 .choose-button {
-  background-color: #4CAF50; /* Couleur verte */
+  background-color: rgb(33, 157, 206); /* Couleur verte */
   color: white;
   border: none;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 2px;
   transition: background-color 0.3s ease;
 }
 
 .choose-button:hover {
-  background-color: #45a049; /* Couleur de survol */
+  background-color: rgb(16, 114, 153); /* Couleur de survol */
 }

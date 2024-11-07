@@ -28,7 +28,7 @@ const FileUpload = () => {
 
         if (response.status === 200) {
           setUploadStatus('File uploaded successfully!');
-          showToast('success', "The file was successfully uploaded.");
+          showToast('success', "The file was successfully uploaded.Please click on the black icon which when hovering displays (save the generated document) this will save your work in order to send it to the recipient. ");
           setShowButton(true); // Afficher le bouton une fois l'upload réussi
         } else {
           setUploadStatus('File upload failed.');

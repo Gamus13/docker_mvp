@@ -1,4 +1,3 @@
-// PdfViewer.js
 import React from 'react';
 
 const PdfViewer = ({ src, width = '100%', height = '300px' }) => {

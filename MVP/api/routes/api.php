@@ -13,6 +13,7 @@ use App\Http\Controllers\UserPdfGenerateController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MailSenderController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\TopicController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -51,6 +52,9 @@ Route::get('/cleaned-json', [PdfGeneratorController::class, 'generatePDF']);
 Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
 
+// route pour le programtic seo
+Route::post('/topics', [TopicController::class, 'store']);
+Route::get('/topics/{keyword}', [TopicController::class, 'show']);
 
 
 // Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -66,6 +70,7 @@ Route::post('/upload', [UserPdfGenerateController::class, 'upload']);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 
 
 Route::middleware('auth:sanctum')->group(function () {

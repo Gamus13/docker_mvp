@@ -30,11 +30,7 @@ const HomeUser = () => {
 
   return (
     <div className="text-neutral-400 rounded-lg w-full h-full overflow-hidden overflow-y-auto">
-      <HeaderUser>
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4">
-          <ListItem src="./images/liked.png" name="Liked Songs" href="liked" />
-        </div>
-      </HeaderUser>
+     
       <div className="mt-2 px-6">
         <div className="flex justify-between items-center">
           {/* <h1 className="text-white text-2xl font-semibold">Your Recent Documents</h1> */}

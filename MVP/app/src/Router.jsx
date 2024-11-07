@@ -18,6 +18,10 @@ import Layout from './components/Shared/Layout';
 import Dashboard from './pages/Dashboard';
 import AdminBlog from './components/Admin/AdminBlog';
 import DashboardUser from './components/Dashboarduser';
+import TopicPage from './components/TopicPage';
+import WebsiteSeo from './pages/WebsiteSeo';
+import Contact from './components/Contact';
+import Pricing from './components/Pricing';
 
 const router = createBrowserRouter([
 
@@ -41,7 +45,11 @@ const router = createBrowserRouter([
         path: '/app/auth/signup',
         element: <AuthentificationList />,
       },
-      
+      // Nouvelle route dynamique
+      {
+        path: '/app/topic/:keyword',  // Inclure "topic" dans le chemin
+        element: <WebsiteSeo />,
+      }
     ],
   },
 
@@ -77,11 +85,29 @@ const router = createBrowserRouter([
 			{
         path: '/app/profile',
         element: <DashboardUser />, 
+        children: [
+          // route pour le dashboard user
+          {
+            path: '/app/profile/home',    
+            element: <HomeUser/>,
+          },
+          {
+            path: '/app/profile/subscriptions',    
+            element: <Pricing/>,
+          },
+          {
+            path: '/app/profile/customer-service',    
+            element: <Contact/>,
+            
+          },
+        ],
       },
       {
         path: '/app/generate',    
         element: <Home/>,
       },
+      
+      
     ],
   },
   

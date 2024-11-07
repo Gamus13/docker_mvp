@@ -171,11 +171,13 @@ import WebViewer from '@pdftron/webviewer';
 import { usePdfContext } from '../contexts/PdfContext'; 
 import '../index.css';
 import axios from '../axios';
+import { useToast } from '../contexts/ToastContext';
 
 function Editpdf({ onLoad }) {
   const viewerDiv = useRef(null);
   const { pdfPath, loading } = usePdfContext(); 
   const [instance, setInstance] = useState(null);
+  const showToast = useToast(); // Utilisez uniquement showToast
 
   useEffect(() => {
     const initWebViewer = async () => {
@@ -205,7 +207,7 @@ function Editpdf({ onLoad }) {
                   xfdfString,
                   downloadType: 'pdf',
                 });
-
+                showToast('success', "By clicking the button you have successfully saved your work and you can now send it. Click the <-- BACK button to do so.");
                 const arr = new Uint8Array(data);
                 const blob = new Blob([arr], { type: 'application/pdf' });
                 const formData = new FormData();
