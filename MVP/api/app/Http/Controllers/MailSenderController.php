@@ -35,8 +35,8 @@ class MailSenderController extends Controller
 
             // Contenu de l'e-mail
             $mail->isHTML(true);
-            $mail->Subject = "Formulaire de soumission de : " . $request->noms;
-            $mail->Body    = "<h3>Noms : " . $request->noms . "</h3><br>
+            $mail->Subject = "Formulaire de soumission de : " . $request->name;
+            $mail->Body    = "<h3>Noms : " . $request->name . "</h3><br>
                             <h3>Email : " . $request->email . "</h3><br>
                             <h3>Message : " . $request->message . "</h3><br>";
 
@@ -47,7 +47,7 @@ class MailSenderController extends Controller
             $mail->clearAddresses();
             $mail->addAddress($request->email);
             $mail->Subject = "Confirmation of receipt of your message";
-            $mail->Body    = "Dear " . $request->noms . ",<br><br>
+            $mail->Body    = "Dear " . $request->name . ",<br><br>
                             Thank you for taking the time to contact us. This email is to confirm that we have received your message. Your request is important to us and we will do our utmost to respond as soon as possible.<br><br>
                             Please note that we handle a large number of requests daily, but rest assured that we carefully review each message we receive. Your satisfaction is our top priority, and we strive to provide you with a complete and accurate response.<br><br>
                             If you have any additional information or details to add, please do not hesitate to share them with us. This will help us better understand your request and provide you with appropriate assistance.<br><br>

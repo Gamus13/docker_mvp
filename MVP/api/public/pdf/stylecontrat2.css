@@ -1,0 +1,75 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    padding: 1cm;
+}
+
+/* Document container */
+.document {
+    width: 21cm; /* Standard A4 width */
+    height: 29.7cm; /* Standard A4 height */
+    padding: 2cm;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-size: 14px;
+    line-height: 1.6;
+    page-break-after: always;
+}
+
+/* Title styling */
+h1 {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 1.5cm;
+    color: #222;
+    font-weight: bold;
+}
+
+/* Section titles */
+h2 {
+    font-size: 16px;
+    margin-top: 1cm;
+    margin-bottom: 0.5cm;
+    color: #333;
+}
+
+/* Paragraph styling */
+p {
+    margin-bottom: 0.4cm;
+    text-align: justify;
+}
+
+/* Section styling */
+section {
+    margin-bottom: 1cm;
+}
+
+/* Footer styling */
+footer {
+    margin-top: 2cm;
+}
+
+footer p {
+    margin-bottom: 0.4cm;
+}
+
+/* Additional styles for improved readability */
+.document p, .document h2, .document footer p {
+    max-width: 19cm;
+    margin-left: auto;
+    margin-right: auto;
+}
+

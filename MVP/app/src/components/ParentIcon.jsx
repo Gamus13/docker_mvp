@@ -23,6 +23,8 @@ import Icon1 from './Icon1';
 import Icon2 from './Icon2';
 import Icon3 from './Icon3';
 import { useVisibilityContext } from '../contexts/VisibilityContext';
+import Icon4 from './Icon4';
+import DocumentTranslation from './DocumentTranslation';
 
 const ParentIcon = () => {
   const { isIcon3Visible } = useVisibilityContext();
@@ -32,6 +34,8 @@ const ParentIcon = () => {
       <Icon1 />
       <Icon2 />
       {isIcon3Visible && <Icon3 />} {/* Affiche Icon3 seulement si isIcon3Visible est true */}
+      <Icon4/>
+      {/* <DocumentTranslation/> */}
     </div>
   );
 };

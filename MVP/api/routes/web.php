@@ -187,3 +187,68 @@ Route::get('/licenciement-modele', function () {
 Route::get('/devis2', function () {
     return view('Devis.devis2');
 });
+
+Route::get('/contrat', function () {
+    return view('Contrat de travail.contrat');
+});
+
+
+Route::get('/invoice4', function () {
+    $data = [
+        'invoice' => [
+            'invoice_number' => '3-2-1',
+            'company_details' => [
+                'name' => 'Tech Solutions Inc.',
+                'address' => '455 Foggy Heights',
+                'postal_code' => 'AZ 85004, US',
+                'email' => 'contact@techsolutions.com',
+            ],
+            'client_details' => [
+                'name' => 'John Doe',
+                'address' => '796 Silver Harbour, TX 79273, US',
+                'email' => 'john.doe@example.com',
+            ],
+            'payment_details' => [
+                'due_date' => '2024-11-30',
+            ],
+            'items' => [
+                [
+                    'service' => 'Design',
+                    'description' => 'Creating a new brand identity and logo design.',
+                    'rate' => 40.00,
+                    'quantity' => 2,
+                    'amount' => 80.00,
+                ],
+                [
+                    'service' => 'Development',
+                    'description' => 'Building a custom e-commerce platform.',
+                    'rate' => 75.00,
+                    'quantity' => 5,
+                    'amount' => 375.00,
+                ],
+                [
+                    'service' => 'SEO',
+                    'description' => 'Optimizing the website for search engines.',
+                    'rate' => 50.00,
+                    'quantity' => 3,
+                    'amount' => 150.00,
+                ],
+                [
+                    'service' => 'Training',
+                    'description' => 'Providing staff with CMS training.',
+                    'rate' => 30.00,
+                    'quantity' => 4,
+                    'amount' => 120.00,
+                ],
+            ],
+            'totals' => [
+                'subtotal' => 725.00,
+                'tax' => 181.25,
+                'total' => 906.25,
+            ]
+        ]
+    ];
+
+    return view('Facture.invoice4', $data);
+
+});

@@ -46,5 +46,8 @@ return [
         'secret_key' => env('ILOVEPDF_SECRET_KEY'),
     ],
 
-
+    'stripe' => [
+        'key' => env('STRIPE_API_KEY'),
+        'secret' => env('STRIPE_API_SECRET'),
+    ],
 ];

@@ -14,6 +14,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MailSenderController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\StripePaymentController;
+use App\Http\Controllers\DocumentTranslationController;
+
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -94,4 +97,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/generate-pdfs/{userId}', [PdfGeneratorController::class, 'generateMultiplePdfsFromTemplates']);
     Route::post('/update-pdf/{userId}', [PdfGeneratorController::class, 'updateDocumentData']);
     Route::get('/updatedocuments/{key}', [PdfGeneratorController::class, 'show'])->name('updatedocuments.show');
+
+
+    Route::post('/stripe/checkout', [StripePaymentController::class, 'stripeCheckout'])->name('stripe.checkout');
+    Route::get('/stripe/checkout/success', [StripePaymentController::class, 'stripeCheckoutSuccess'])->name('stripe.checkout.success');
+
+
+    Route::post('/translate-document', [DocumentTranslationController::class, 'translateDocument']);
+
 });

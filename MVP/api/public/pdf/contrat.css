@@ -1,0 +1,77 @@
+/* Global reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Contract container for A4 dimensions */
+.contract {
+    width: 21cm; /* Largeur A4 */
+    height: 29.7cm; /* Hauteur A4 */
+    background-color: #fff;
+    padding: 2cm;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+    overflow: hidden; /* Évite les débordements */
+}
+
+/* Title styling */
+h1 {
+    text-align: center;
+    margin-bottom: 1.5cm;
+    font-size: 1.5em;
+}
+
+/* Section spacing */
+.parties, .articles, .signature {
+    margin-bottom: 1.5cm;
+}
+
+.articles h2 {
+    margin-top: 1.5cm;
+    font-size: 1.2em;
+    color: #444;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.2cm;
+}
+
+.articles p {
+    margin-top: 0.6cm;
+    text-align: justify;
+}
+
+ul {
+    margin-left: 1cm;
+    list-style: none;
+}
+
+ul li {
+    margin-bottom: 0.5cm;
+}
+
+.signature {
+    text-align: center;
+    margin-top: 2cm;
+}
+
+.signature p {
+    margin: 0.8cm 0;
+}
+
+p, li {
+    line-height: 1.8;
+    margin-bottom: 0.6cm;
+}

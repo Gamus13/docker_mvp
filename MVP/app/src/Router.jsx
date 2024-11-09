@@ -22,6 +22,7 @@ import TopicPage from './components/TopicPage';
 import WebsiteSeo from './pages/WebsiteSeo';
 import Contact from './components/Contact';
 import Pricing from './components/Pricing';
+import Contact2 from './components/Contact/index2';
 
 const router = createBrowserRouter([
 
@@ -97,7 +98,7 @@ const router = createBrowserRouter([
           },
           {
             path: '/app/profile/customer-service',    
-            element: <Contact/>,
+            element: <Contact2/>,
             
           },
         ],

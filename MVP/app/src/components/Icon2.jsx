@@ -53,7 +53,7 @@ const Icon2 = () => {
             {/* Icône pour ouvrir la modal */}
             <div className="icon" title="All document templates" onClick={toggleModal}>
                 <MdInsertDriveFile />
-            </div>
+            </div>  
             
             {/* Modal pour afficher les PDFs avec pagination */}
             {isModalOpen && (
