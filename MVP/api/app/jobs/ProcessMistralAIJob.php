@@ -48,7 +48,9 @@ class ProcessMistralAIJob implements ShouldQueue
         Log::info('Context envoyé à Mistral AI', ['context' => $context]);
 
         // Récupérer la valeur de jsondocxusers dans la table jsonaddata
-        $jsonData = JsonData::first(); // Récupère la première entrée
+        // $jsonData = JsonData::first(); // Récupère la première entrée
+        $jsonData = JsonData::where('user_id', $this->userId)->first();
+
         $jsondocxusers = $jsonData ? $jsonData->jsondocxusers : null;
 
         // Si aucun JSON n'est trouvé dans la base de données

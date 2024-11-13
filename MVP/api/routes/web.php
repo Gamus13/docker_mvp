@@ -252,3 +252,11 @@ Route::get('/invoice4', function () {
     return view('Facture.invoice4', $data);
 
 });
+
+Route::get('/stage', function () {
+    return view('Lettre de demande de stage.demande_stage3');
+});
+
+Route::get('/demission', function () {
+    return view('Lettre de démission.demission_simple2');
+});

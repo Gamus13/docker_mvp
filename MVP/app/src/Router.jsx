@@ -21,8 +21,14 @@ import DashboardUser from './components/Dashboarduser';
 import TopicPage from './components/TopicPage';
 import WebsiteSeo from './pages/WebsiteSeo';
 import Contact from './components/Contact';
-import Pricing from './components/Pricing';
 import Contact2 from './components/Contact/index2';
+import SubscriptionPage from './components/CheckoutForm';
+import Pricing from './components/CheckoutForm';
+import ProfilePage from './components/ProfilePage';
+import Privacy from './components/Privacy';
+import TOS from './components/TOS';
+import PricingFooter from './components/PricingFooter';
+import ContactLink from './components/ContactLink';
 
 const router = createBrowserRouter([
 
@@ -37,6 +43,22 @@ const router = createBrowserRouter([
       {
         path: '/app/edit',
         element: <Editpdf />, 
+      },
+      {
+        path: '/app/TOS',
+        element: <TOS />, 
+      },
+      {
+        path: '/app/Privacy Policy',
+        element: <Privacy />, 
+      },
+      {
+        path: '/app/contact',
+        element: <ContactLink />, 
+      },
+      {
+        path: '/app/pricing',
+        element: <PricingFooter />, 
       },
       {
         path: '/app/auth/signin',
@@ -99,6 +121,11 @@ const router = createBrowserRouter([
           {
             path: '/app/profile/customer-service',    
             element: <Contact2/>,
+            
+          },
+          {
+            path: '/app/profile/status_pricing',    
+            element: <ProfilePage/>,
             
           },
         ],

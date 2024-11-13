@@ -12,7 +12,7 @@ const   Footer = () => {
               <div className="-mx-4 flex flex-wrap">
                 <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
                   <div className="mb-12 max-w-[360px] lg:mb-16">
-                    <Link href="/" className="mb-8 inline-block">
+                    <Link href="/app/" className="mb-8 inline-block">
                       <img
                         src="./images/logo/UntitledDocxtalk-removebg-preview.png"
                         alt="logo"
@@ -29,12 +29,11 @@ const   Footer = () => {
                       />
                     </Link>
                     <p className={`mb-9 text-base leading-relaxed text-body-color  ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
-                      Générateur de documents AI : crée automatiquement et instantanément n'importe quel document grâce à la puissance de l'IA. 
-                      Aucune compétence requise !
+                      AI Document Generator: Automatically and instantly creates any document using the power of AI. No skills required!
                     </p>
                     <div className="flex items-center">
                       <a
-                        href="/"
+                        href="/app/"
                         aria-label="social-link"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -54,7 +53,7 @@ const   Footer = () => {
                         </svg>
                       </a>
                       <a
-                        href="/"
+                        href="/app/"
                         aria-label="social-link"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -76,7 +75,7 @@ const   Footer = () => {
                         </svg>
                       </a>
                       <a
-                        href="/"
+                        href="/app/"
                         aria-label="social-link"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -92,7 +91,7 @@ const   Footer = () => {
                         </svg>
                       </a>
                       <a
-                        href="/"
+                        href="/app/"
                         aria-label="social-link"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -119,7 +118,7 @@ const   Footer = () => {
                     <ul>
                       <li>
                         <Link
-                          to="/blog"
+                          to="/app/blog"
                           className={`mb-4 inline-block text-base text-body-color duration-300 hover:text-primary ${theme === 'dark' ? 'text-white hover:text-blue-700' : 'text-black'}`}
                         >
                           Blog
@@ -127,7 +126,7 @@ const   Footer = () => {
                       </li>
                       <li>
                         <Link
-                          to="/"
+                          to="/app/pricing"
                           className={`mb-4 inline-block text-base text-body-color duration-300 hover:text-primary ${theme === 'dark' ? 'text-white hover:text-blue-700' : 'text-black'}`}
                         >
                           Pricing
@@ -135,7 +134,7 @@ const   Footer = () => {
                       </li>
                       <li>
                         <Link
-                          to="/about"
+                          to="/app/about"
                           className={`mb-4 inline-block text-base text-body-color duration-300 hover:text-primary ${theme === 'dark' ? 'text-white hover:text-blue-700' : 'text-black'}`}
                         >
                           About
@@ -153,7 +152,7 @@ const   Footer = () => {
                     <ul>
                       <li>
                         <Link
-                          href="/"
+                          to="/app/TOS"
                           className={`mb-4 inline-block text-base text-body-color duration-300 hover:text-primary ${theme === 'dark' ? 'text-white hover:text-blue-700' : 'text-black'}`}
                         >
                           TOS
@@ -161,7 +160,7 @@ const   Footer = () => {
                       </li>
                       <li>
                         <Link
-                          to="/Privacy Policy"
+                          to="/app/Privacy Policy"
                           className={`mb-4 inline-block text-base text-body-color duration-300 hover:text-primary ${theme === 'dark' ? 'text-white hover:text-blue-700' : 'text-black'}`}
                         >
                           Privacy Policy
@@ -169,7 +168,7 @@ const   Footer = () => {
                       </li>
                       <li>
                         <Link
-                          to="/Privacy Policy"
+                          to="/app/Refund Policy"
                           className={`mb-4 inline-block text-base text-body-color duration-300 hover:text-primary ${theme === 'dark' ? 'text-white hover:text-blue-700' : 'text-black'}`}
                         >
                           Refund Policy
@@ -187,26 +186,26 @@ const   Footer = () => {
                     <ul>
                       <li>
                         <Link
-                          to="/contact"
+                          to="/app/contact"
                           className={`mb-4 inline-block text-base text-body-color duration-300 hover:text-primary ${theme === 'dark' ? 'text-white  hover:text-blue-700' : 'text-black'}`}
                         >
                           Open Support Ticket
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link
                           to="/"
                           className={`mb-4 inline-block text-base text-body-color duration-300 hover:text-primary ${theme === 'dark' ? 'text-white  hover:text-blue-700' : 'text-black'}`}
                         >
                           Terms of Use
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link
-                          to="/about"
+                          to="/app/News"
                           className={`mb-4 inline-block text-base text-body-color duration-300 hover:text-primary ${theme === 'dark' ? 'text-white hover:text-blue-700' : 'text-black'}`}
                         >
-                          About
+                          News
                         </Link>
                       </li>
                     </ul>

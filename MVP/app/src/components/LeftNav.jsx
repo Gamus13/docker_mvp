@@ -54,7 +54,7 @@ function LeftNav() {
         <span className="rounded w-full py-2 px-2 text-xs flex items-center justify-center cursor-pointer border border-gray-400 hover:bg-gray-800 transition-all duration-300">
           <span className="flex gap-2 items-center justify-center text-sm">
             <FiArrowLeft className="text-xl" />
-            <Link to="/app/profile">Back</Link>
+            <Link to="/app/profile/home">Back</Link>
           </span>
         </span>
 

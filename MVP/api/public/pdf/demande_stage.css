@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+}
+
+#letter {
+    background: white;
+    padding: 30px;
+    width: 21cm; /* Largeur A4 */
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: #333;
+    line-height: 1.8;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+section {
+    margin-bottom: 2em; /* Espace entre les sections */
+}
+
+p {
+    margin: 1em auto;
+    max-width: 600px; /* Limite la largeur des paragraphes */
+    text-align: justify;
+    overflow-wrap: break-word;
+}
+
+/* Sauts de page automatiques pour DomPDF */
+#letter {
+    page-break-inside: auto;
+}
+
+section, p {
+    page-break-inside: avoid; /* Évite les sauts de page au milieu d’une section ou d'un paragraphe */
+}

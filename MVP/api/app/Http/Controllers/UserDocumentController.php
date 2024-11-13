@@ -58,29 +58,33 @@ class UserDocumentController extends Controller
     //     return response()->json(['message' => 'Document non trouvé'], 404);
     // }
 
-public function show($key)
-{
-    Log::info('Méthode show appelée avec la clé : ' . $key); // Log la clé reçue
+    public function show($key)
+    {
+        Log::info('Méthode show appelée avec la clé : ' . $key); // Log la clé reçue
 
-    // Chercher dans la table UserDocument où le champ JSON "data->objet" correspond à la clé fournie
-    $userDocument = UserDocument::whereJsonContains('data->objet', $key)->first();
+        // Chercher dans la table UserDocument où le champ JSON "data->objet" correspond à la clé fournie
+        $userDocument = UserDocument::whereJsonContains('data->objet', $key)->first();
 
-    // Si un document est trouvé
-    if ($userDocument) {
-        Log::info('Document trouvé :', ['document' => $userDocument]); // Log les données du document trouvé
+        // Si un document est trouvé
+        if ($userDocument) {
+            Log::info('Document trouvé :', ['document' => $userDocument]); // Log les données du document trouvé
 
-        // Stocker le contenu JSON dans jsonaddata
-        JsonData::create([
-            'jsondocxusers' => json_encode($userDocument->data) // Assurez-vous que les données sont au format JSON
-        ]);
+            // Récupérer l'ID de l'utilisateur connecté
+            $userId = auth()->id();
 
-        return response()->json($userDocument->data);
+            // Stocker le contenu JSON dans jsonaddata
+            JsonData::create([
+                'jsondocxusers' => json_encode($userDocument->data), // Assurez-vous que les données sont au format JSON
+                'user_id' => $userId
+            ]);
+
+            return response()->json($userDocument->data);
+        }
+
+        // Si aucun document n'est trouvé, on retourne un message d'erreur
+        Log::warning('Aucun document trouvé pour la clé : ' . $key); // Log un avertissement si aucun document n'est trouvé
+        return response()->json(['message' => 'Document non trouvé'], 404);
     }
-
-    // Si aucun document n'est trouvé, on retourne un message d'erreur
-    Log::warning('Aucun document trouvé pour la clé : ' . $key); // Log un avertissement si aucun document n'est trouvé
-    return response()->json(['message' => 'Document non trouvé'], 404);
-}
 
 
 

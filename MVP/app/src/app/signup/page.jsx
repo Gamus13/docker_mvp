@@ -692,12 +692,12 @@ const SignupPage = () => {
                       </div>
                       <span>
                         By creating account means you agree to the
-                        <Link to="" className="text-sky-700 hover:underline">
+                        <Link to="/app/TOS" className="text-sky-700 hover:underline">
                           {" "}
                           Terms and Conditions{" "}
                         </Link>
                         , and our
-                        <Link to="/privacy-policy" className="text-sky-700 hover:underline">
+                        <Link to="/app/Privacy Policy" className="text-sky-700 hover:underline">
                           {" "}
                           Privacy Policy{" "}
                         </Link>

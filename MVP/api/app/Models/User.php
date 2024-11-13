@@ -7,13 +7,15 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Cashier\Billable;
 
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -92,10 +94,10 @@ class User extends Authenticatable
         return $this->hasMany(Embeddingusers_collections::class);
     }
 
-    // public function jsonData(): HasMany
-    // {
-    //     return $this->hasMany(JsonData::class);
-    // }
+    public function jsonData(): HasMany
+    {
+        return $this->hasMany(JsonData::class);
+    }
 
     public function finalData(): HasMany
     {
@@ -122,5 +124,10 @@ class User extends Authenticatable
     public function pdfRecords()
     {
         return $this->hasMany(PdfRecord::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 }

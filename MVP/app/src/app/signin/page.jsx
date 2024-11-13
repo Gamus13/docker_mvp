@@ -55,7 +55,7 @@ const SigninPage = () => {
 
     // Timeout for error message
     const timeoutId = setTimeout(() => {
-      setErrorMessage('The request is taking too long, please try again later.');
+      setErrorMessage('be patient you will be redirected to your dashboard at some point.');
       setIsLoading(false);
     }, 5000); 
 

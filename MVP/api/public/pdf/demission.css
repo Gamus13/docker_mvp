@@ -1,0 +1,86 @@
+/* style.css */
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    color: #333;
+}
+
+/* Letter Container Styling */
+#letter {
+    background: white;
+    padding: 30px;
+    width: 21cm; /* Taille pour A4 en largeur */
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+/* Header and Footer Styling */
+header, footer {
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+/* Title Styling */
+h1 {
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* Paragraph Styling */
+p {
+    margin: 1em 0;
+    max-width: 600px; /* Limite de largeur pour les paragraphes */
+    text-align: justify;
+    overflow-wrap: break-word;
+}
+
+/* Bolded Text */
+p strong {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+/* Signature Styling */
+.signature {
+    margin-top: 2em;
+}
+
+/* Print Settings */
+@media print {
+    body {
+        background-color: white;
+        -webkit-print-color-adjust: exact;
+    }
+
+    #letter {
+        width: 100%;
+        padding: 20px;
+        box-shadow: none;
+    }
+
+    h1, p {
+        max-width: none; /* Pour que DomPDF ajuste la mise en page automatiquement */
+    }
+
+    /* Sauts de page automatiques pour éviter les coupures inappropriées */
+    h1, p, .signature {
+        page-break-inside: avoid;
+    }
+}

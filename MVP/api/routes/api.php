@@ -16,6 +16,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\DocumentTranslationController;
+use App\Http\Controllers\StripeWebhookController;
 
 
 Route::get('/user', function (Request $request) {
@@ -81,7 +82,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/objet-document', [ObjetDocumentController::class, 'store']);
     Route::post('/convert-url-to-pdf', [UrlPdfController::class, 'convert']);
     Route::post('/fileusers', [UserPdfController::class, 'upload']);
-    Route::get('/create-context', [UserDocumentController::class, 'createContext'])->name('documents.createContext');
+    Route::get('/create-context', [UserDocumentController::class, 'createContext']);
 
     Route::get('/users/total', [AuthController::class, 'getTotalUsers']);
     Route::get('/users', [AuthController::class, 'getAllUsers']);
@@ -102,7 +103,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/stripe/checkout', [StripePaymentController::class, 'stripeCheckout'])->name('stripe.checkout');
     Route::get('/stripe/checkout/success', [StripePaymentController::class, 'stripeCheckoutSuccess'])->name('stripe.checkout.success');
 
+    Route::post('/stripe/webhook', [StripeWebhookController::class, 'handleWebhook']);
+
+    Route::post('/check-payment-status', [StripePaymentController::class, 'checkPaymentStatus']);
+
 
     Route::post('/translate-document', [DocumentTranslationController::class, 'translateDocument']);
 
+    Route::post('/create-subscription', [StripePaymentController::class, 'createSubscription']);
+    Route::post('/cancel-subscription', [StripePaymentController::class, 'cancelSubscription']);
+    Route::post('/swap-subscription', [StripePaymentController::class, 'swapSubscription']);
 });

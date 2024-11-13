@@ -12,7 +12,7 @@ use App\Jobs\ProcessUsersExtraction;
 use Illuminate\Support\Facades\Log;
 use App\Models\Userpdf;
 use App\Models\Embeddingsusers;
-
+use App\Http\Controllers\UserDocumentController;
 
 class UserPdfController extends Controller
 {
@@ -46,17 +46,19 @@ class UserPdfController extends Controller
         return $this->index();
     }
 
+
+
     public function index()
     {
         // Récupérer tout le contenu de la colonne 'document' de la table 'embeddingsurl'
-        $datausers = Embeddingsusers::pluck('document'); // Récupère uniquement la colonne 'document'
+        $datausers = Embeddingsusers::pluck('document');
 
         // Ajouter un log pour vérifier que les données ont bien été récupérées
         Log::info('Index: Documents récupérés depuis la base de données.', ['datausers' => $datausers]);
 
-        // Rediriger vers createContext en passant les documents dans la session
-        return redirect()->route('documents.createContext')
-                        ->with('datausers', $datausers);
+        // Appeler createContext en passant $datausers
+        $controller = new UserDocumentController();
+        return $controller->createContext(request(), $datausers);
     }
 
 }

@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Body styling */
@@ -11,50 +12,63 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: white;
     font-family: Arial, sans-serif;
     padding: 1cm;
 }
 
 /* Document container */
 .document {
-    width: 21cm; /* Standard A4 width */
-    height: 29.7cm; /* Standard A4 height */
-    padding: 2cm;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    padding: 30px;
+    width: 21cm; /* Largeur A4 */
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
     color: #333;
-    font-size: 14px;
-    line-height: 1.6;
-    page-break-after: always;
+    line-height: 1.8;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* Ajustement de marges pour éviter coupure inopportune dans le PDF */
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 /* Title styling */
 h1 {
     text-align: center;
-    font-size: 18px;
-    margin-bottom: 1.5cm;
-    color: #222;
-    font-weight: bold;
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 /* Section titles */
 h2 {
-    font-size: 16px;
-    margin-top: 1cm;
-    margin-bottom: 0.5cm;
+    font-size: 1.2em;
+    margin-bottom: 1em;
     color: #333;
 }
 
 /* Paragraph styling */
+/* p {
+    margin: 1em 0;
+    max-width: 600px; /* Limite la largeur du paragraphe
+    text-align: justify; /* Justifie le texte pour un alignement uniforme
+    overflow-wrap: break-word; /* Assure la coupure des mots si nécessaire
+} */
+
+
 p {
-    margin-bottom: 0.4cm;
-    text-align: justify;
+    margin: 1em auto; /* Centrer le paragraphe avec un espace vertical */
+    max-width: 80%; /* Limite la largeur à 80% du conteneur */
+    text-align: justify; /* Justifie le texte pour un alignement uniforme */
+    overflow-wrap: break-word; /* Assure la coupure des mots si nécessaire */
 }
+
 
 /* Section styling */
 section {
-    margin-bottom: 1cm;
+    margin-bottom: 2em;
+    /* Empêcher la division d’une section sur deux pages */
+    page-break-inside: avoid;
 }
 
 /* Footer styling */

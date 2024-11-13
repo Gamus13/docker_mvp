@@ -12,23 +12,23 @@
 
         <section>
             <h2>Entre les soussignés :</h2>
-            <p>La société (forme juridique, dénomination sociale, n° d’identification, capital) dont le siège social est situé à (adresse), représentée par Madame/Monsieur (nom, prénom), agissant en qualité de (fonction), d’une part,</p>
-            <p>ci-après dénommée « la société »</p>
+            <p>La société {{ $data['contrat_de_travail']['company_details']['name'] }} dont le siège social est situé à {{ $data['contrat_de_travail']['company_details']['city'] }}, représentée par Madame/Monsieur (nom, prénom), agissant en qualité de (fonction), d’une part,</p>
+            <p>ci-après dénommée « {{ $data['contrat_de_travail']['company_details']['name'] }} »</p>
             <p>et</p>
-            <p>Madame/Monsieur (nom, prénom du salarié) demeurant à (adresse), né(e) le (date de naissance), de nationalité (…), dont le numéro de sécurité sociale est :</p>
+            <p>Madame/Monsieur {{ $data['contrat_de_travail']['employer_details']['name'] }} demeurant à {{ $data['contrat_de_travail']['employer_details']['address'] }}, né(e) le (date de naissance), de nationalité {{ $data['contrat_de_travail']['employer_details']['country'] }}, dont le numéro de sécurité sociale est :</p>
             <p>d’autre part,</p>
-            <p>ci-après dénommé « le salarié »</p>
+            <p>ci-après dénommé « {{ $data['contrat_de_travail']['employer_details']['name'] }} »</p>
             <p>il a été convenu ce qui suit :</p>
         </section>
 
         <section>
             <h2>Article I – Engagement</h2>
-            <p>Mme/M. (nom, prénom) est engagé(e) au poste proposé par la société (dénomination sociale) en qualité de (qualification ou titre), sous réserve des résultats de la visite médicale d’embauche décidant son aptitude. Ce contrat prend effet à compter du (date) à (heures).</p>
+            <p>Mme/M. {{ $data['contrat_de_travail']['employer_details']['name'] }} est engagé(e) au poste proposé par la société {{ $data['contrat_de_travail']['company_details']['name'] }} en qualité de {{ $data['contrat_de_travail']['employer_details']['occupation'] }}, sous réserve des résultats de la visite médicale d’embauche décidant son aptitude. Ce contrat prend effet à compter du (date) à (heures).</p>
         </section>
 
         <section>
             <h2>Article II – Fonctions</h2>
-            <p>La société embauche le salarié à temps complet, en tant que (dénomination de l’emploi), avec la qualification professionnelle de (…), au coefficient (voir convention collective). Mme/M. (nom, prénom) en sa qualité de (poste occupé) sera plus particulièrement chargé de (préciser). Cette liste de tâches est non exhaustive et pourra être complétée en fonction des besoins de l’entreprise.</p>
+            <p>La société embauche le salarié à temps complet, en tant que (dénomination de l’emploi), avec la qualification professionnelle de {{ $data['contrat_de_travail']['employer_details']['occupation'] }}, au coefficient (voir convention collective). Mme/M. {{ $data['contrat_de_travail']['employer_details']['name'] }} en sa qualité de {{ $data['contrat_de_travail']['employer_details']['occupation'] }} sera plus particulièrement chargé de {{ $data['contrat_de_travail']['employer_details']['expertise'] }}. Cette liste de tâches est non exhaustive et pourra être complétée en fonction des besoins de l’entreprise.</p>
         </section>
 
         <section>
@@ -49,7 +49,7 @@
 
         <section>
             <h2>Article VI – Lieu de travail</h2>
-            <p>Le lieu de travail du salarié est situé à (lieu précis). Il pourra être modifié temporairement ou définitivement à l’intérieur du secteur géographique de la société.</p>
+            <p>Le lieu de travail du salarié est situé à {{ $data['contrat_de_travail']['company_details']['city'] }}. Il pourra être modifié temporairement ou définitivement à l’intérieur du secteur géographique de la société.</p>
         </section>
 
         <section>
@@ -59,7 +59,7 @@
 
         <section>
             <h2>Article VIII – Rémunération</h2>
-            <p>La rémunération mensuelle brute sera de (montant) euros. Toute heure supplémentaire sera majorée conformément aux dispositions en vigueur.</p>
+            <p>La rémunération mensuelle brute sera de (montant) euros ou votre monnaie . Toute heure supplémentaire sera majorée conformément aux dispositions en vigueur.</p>
         </section>
 
         <section>
@@ -69,7 +69,7 @@
 
         <section>
             <h2>Article X – DPAE</h2>
-            <p>La société a réalisé la Déclaration Préalable à l’Embauche auprès de l’URSSAF de (ville).</p>
+            <p>La société a réalisé la Déclaration Préalable à l’Embauche auprès de l’URSSAF de {{ $data['contrat_de_travail']['company_details']['city'] }}.</p>
         </section>
 
         <section>
@@ -78,9 +78,9 @@
         </section>
 
         <footer>
-            <p>Fait en double exemplaire à le</p>
-            <p>Signature de l’employeur, précédée de la mention « lu et approuvé » :</p>
-            <p>Signature du salarié, précédée de la mention « lu et approuvé » :</p>
+            <p>Fait en double exemplaire le {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
+            <p>Signature de l’employeur ___________________, précédée de la mention « lu et approuvé » </p>
+            <p>Signature du salarié ________________, précédée de la mention « lu et approuvé » </p>
         </footer>
     </div>
 </body>

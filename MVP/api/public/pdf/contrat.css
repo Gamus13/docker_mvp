@@ -8,31 +8,36 @@
 /* Body styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: white;
     color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    flex-direction: column;
 }
 
 /* Contract container for A4 dimensions */
 .contract {
+    background: white;
+    padding: 30px;
     width: 21cm; /* Largeur A4 */
-    height: 29.7cm; /* Hauteur A4 */
-    background-color: #fff;
-    padding: 2cm;
-    border: 1px solid #ddd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    line-height: 1.6;
-    overflow: hidden; /* Évite les débordements */
+    max-width: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    color: #333;
+    line-height: 1.8;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* Ajustement de marges pour éviter coupure inopportune dans le PDF */
+    margin: 0 auto;
+    overflow: hidden;
 }
 
 /* Title styling */
 h1 {
     text-align: center;
-    margin-bottom: 1.5cm;
     font-size: 1.5em;
+    margin-bottom: 1.5em;
 }
 
 /* Section spacing */
@@ -40,17 +45,23 @@ h1 {
     margin-bottom: 1.5cm;
 }
 
-.articles h2 {
-    margin-top: 1.5cm;
+h2 {
     font-size: 1.2em;
-    color: #444;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.2cm;
+    margin-bottom: 1em;
 }
 
-.articles p {
-    margin-top: 0.6cm;
-    text-align: justify;
+p {
+    margin: 1em 0;
+    max-width: 600px; /* Limite la largeur du paragraphe */
+    text-align: justify; /* Justifie le texte pour un alignement uniforme */
+    overflow-wrap: break-word; /* Assure la coupure des mots si nécessaire */
+}
+
+
+section {
+    margin-bottom: 2em;
+    /* Empêcher la division d’une section sur deux pages */
+    page-break-inside: avoid;
 }
 
 ul {
