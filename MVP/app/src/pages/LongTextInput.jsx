@@ -10,10 +10,10 @@ const LongTextInput = () => {
   const { setIcon3Visibility } = useVisibilityContext();
 
   const documentTypes = [
-    'Contrat', 'Lettre de motivation', 'Devis', 'Facture', 'Bon de commande',
-    'Bon de livraison', 'Contrat de travail', 'Lettre de recommandation', 'Lettre de démission',
-    'Lettre de licenciement', 'Lettre de relance', 'Lettre de réclamation', 'Lettre de remerciement',
-    'Lettre de demande de congé', 'Lettre de demande de stage', 'Lettre de demande de subvention',
+    'Contrat de travail', 'Lettre de demande de stage', 'Devis', 'Facture','Lettre de licenciement' ,
+    // 'Bon de commande','Bon de livraison','Contrat' , 'Lettre de recommandation', 'Lettre de démission',
+    // , 'Lettre de relance', 'Lettre de réclamation', 'Lettre de remerciement',
+    // 'Lettre de demande de congé','Lettre de motivation' , 'Lettre de demande de subvention', 
   ];
 
   const handleSelection = async (e) => {

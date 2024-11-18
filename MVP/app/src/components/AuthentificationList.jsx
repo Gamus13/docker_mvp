@@ -3,15 +3,17 @@ import Header from './Header/Nav';
 import Footer from './Footer';
 
 import SigninPage from '../app/signin/page';
+import Header2 from './Header/Nav2';
+import Footer2 from './Footer2';
 
 
 
 function AuthentificationList() {
     return (
         <>
-            <Header/>
+            <Header2/>
             <SigninPage/>
-            <Footer/>
+            <Footer2/>
         </>
     );
 };

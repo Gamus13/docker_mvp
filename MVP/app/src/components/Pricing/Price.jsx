@@ -32,6 +32,7 @@ const Pricing = () => {
         />
 
         <div className="w-full">
+          <h1 className="text-2xl text-center mb-8 text-sky-600">-50% during the launch period</h1>
           <div className="mb-8 flex justify-center md:mb-12 lg:mb-16">
             <span
               onClick={() => setIsMonthly(true)}

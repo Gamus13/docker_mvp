@@ -13,7 +13,7 @@ function DashboardUser() {
                 <Sidebar />
                 <Library />
             </div>
-
+        
             {/* Contenu dynamique */}
             <div className="flex-1 overflow-y-auto">
                 <HeaderUser/>

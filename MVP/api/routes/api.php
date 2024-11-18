@@ -17,6 +17,7 @@ use App\Http\Controllers\TopicController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\DocumentTranslationController;
 use App\Http\Controllers\StripeWebhookController;
+use App\Http\Controllers\PostController;
 
 
 Route::get('/user', function (Request $request) {
@@ -110,7 +111,14 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/translate-document', [DocumentTranslationController::class, 'translateDocument']);
 
+    /*route pour stripe*/
     Route::post('/create-subscription', [StripePaymentController::class, 'createSubscription']);
     Route::post('/cancel-subscription', [StripePaymentController::class, 'cancelSubscription']);
     Route::post('/swap-subscription', [StripePaymentController::class, 'swapSubscription']);
+
+    /* route pour les articles de blog */
+    Route::get('/posts', [PostController::class, 'index']);
+    Route::get('/posts/{id}', [PostController::class, 'show']);
+    Route::get('/tags', [PostController::class, 'getTags']); // Pour récupérer les tags
+    Route::post('/posts', [PostController::class, 'store']);
 });

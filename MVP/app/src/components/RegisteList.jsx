@@ -1,16 +1,16 @@
 import React from 'react'
-import Header from './Header/Nav';
-import Footer from './Footer';
 import SignupPage from '../app/signup/page';
+import Header2 from './Header/Nav2';
+import Footer2 from './Footer2';
 
 
 
 function RegisteList() {
     return (
         <>
-            <Header/>
+            <Header2/>
             <SignupPage/>
-            <Footer/>
+            <Footer2/>
         </>
     );
 };

@@ -29,6 +29,9 @@ import Privacy from './components/Privacy';
 import TOS from './components/TOS';
 import PricingFooter from './components/PricingFooter';
 import ContactLink from './components/ContactLink';
+import BlogList from './components/BlogList';
+import AboutPageList from './components/AboutPageList';
+import BlogDetailsList from './components/BlogDetailsList';
 
 const router = createBrowserRouter([
 
@@ -68,11 +71,26 @@ const router = createBrowserRouter([
         path: '/app/auth/signup',
         element: <AuthentificationList />,
       },
+
+      {
+				path: '/app/blog',
+				element: <BlogList/>,
+			},
+      {
+				path: '/app/blog-details',
+				element: <BlogDetailsList/>,
+			},
+      {
+				path: '/app/about',
+				element: <AboutPageList/>,
+			},
       // Nouvelle route dynamique
       {
         path: '/app/topic/:keyword',  // Inclure "topic" dans le chemin
         element: <WebsiteSeo />,
       }
+
+      
     ],
   },
 

@@ -5,7 +5,7 @@ import { Link } from 'react-scroll';
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
-const Header = () => {
+const Header2 = () => {
   // Navbar toggle
   const { theme } = useContext(ThemeContext);
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -52,12 +52,12 @@ const Header = () => {
                 } `}
               >
                 <img
-                  src="./images/logo/UntitledDocxtalk-removebg-preview.png"
+                  src="../images/logo/UntitledDocxtalk-removebg-preview.png"
                   alt="logo"
                   className="w-100 dark:hidden"
                 />
                 <img
-                  src="./images/logo/UntitledDocxtalk__1_-removebg-preview-removebg-preview (1).png"
+                  src="../images/logo/UntitledDocxtalk__1_-removebg-preview-removebg-preview (1).png"
                   alt="logo"
                   className="hidden w-100 dark:block"
                 />
@@ -172,5 +172,5 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Header2;
 

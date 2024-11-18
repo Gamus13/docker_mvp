@@ -165,9 +165,9 @@ const Carousel = () => {
     },
     {
       id: 2,
-      title: 'Once UI',
-      subtitle: 'Your 5-minute, no-code React design system',
-      imageUrl: 'https://cdn.pixabay.com/photo/2022/08/31/13/05/sea-7423274_640.jpg',
+      title: 'User space',
+      subtitle: 'A smooth interface to view all your created documents as well as access to several other features.',
+      imageUrl: './images/logo/Capture dashborduser.PNG',
     },
     {
       id: 3,
