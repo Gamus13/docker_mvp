@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './Header/Nav';
 import Footer from './Footer';
 import Pricing from './Pricing/Price';
+import Header from './Header';
 
 function PricingFooter() {
     return (

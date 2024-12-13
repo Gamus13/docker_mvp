@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('payment_intent_id')->nullable()->unique();
-            $table->string('payment_status');
-            $table->decimal('amount', 10, 2); // Montant du paiement
-            $table->string('currency');
+            $table->decimal('total', 8, 2)->nullable();
+            $table->string('order_id')->nullable();
+            $table->string('st_cus_id', 1024)->nullable();
+            $table->string('st_sub_id', 1024)->nullable();
+            $table->string('st_payment_intent_id', 1024)->nullable();
+            $table->string('st_payment_method', 1024)->nullable();
+            $table->string('st_payment_status', 1024)->nullable();
+            $table->bigInteger('date')->nullable();
             $table->timestamps();
         });
     }

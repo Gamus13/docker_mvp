@@ -59,6 +59,7 @@
 
 import React, { useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext'; // Assurez-vous de fournir le chemin correct vers votre ThemeToggler
+import { curve, heroBackground, robot } from "../assets";
 
 const SectionTitle = ({ title, paragraph, width = "870px", center, mt = "60px" }) => {
   const { theme } = useContext(ThemeContext);
@@ -82,7 +83,17 @@ const SectionTitle = ({ title, paragraph, width = "870px", center, mt = "60px" }
         }}
       >
         {titleParts[0]}
-        <span className="text-sky-400">any document</span>
+        {/* <span className="text-sky-400">any document</span> */}
+        <span className="inline-block relative text-sky-400">
+            any document
+              <img
+                className="absolute top-full left-0 w-full xl:-mt-2"
+                src={curve}
+                alt="curve"
+                width={624}
+                height={24}
+              />
+            </span>
         {titleParts[1]}
       </h2>
       <p

@@ -7,6 +7,7 @@ import PdfUpdateModal from '../components/PdfUpdateModal';
 import LoadPdfButton from '../components/LoadPdfButton';
 import ParentIcon from '../components/ParentIcon';
 import DocumentTranslation from '../components/DocumentTranslation';
+import JsonTranslator from '../components/JsonTranslator';
 // import GoogleLoginButton from './GoogleLoginButton';
 
 function Features() {
@@ -22,6 +23,7 @@ function Features() {
         <URLInput className="w-full mb-4" />
         <FileUpload className="w-full mb-4" />
         <ParentIcon/>
+        {/* <JsonTranslator/> */}
         {/* <DocumentTranslation/> */}
         {/* <PdfUpdateModal/> */}
         {/* <LoadPdfButton/> */}

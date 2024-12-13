@@ -1,0 +1,115 @@
+body {
+    background: #ccc;
+    padding: 30px;
+    font-size: 0.6em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+.container {
+    width: 21cm;
+    min-height: 29.7cm;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+}
+
+.invoice {
+    background: #fff;
+    width: 100%;
+    padding: 2cm;
+    box-sizing: border-box;
+}
+
+.logo {
+    width: 4cm;
+}
+
+.document-type {
+    text-align: right;
+    color: #444;
+}
+
+.conditions {
+    font-size: 0.7em;
+    color: #666;
+}
+
+.bottom-page {
+    font-size: 0.7em;
+}
+
+.addressMySam, .addressDriver {
+    font-size: 14px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-vertical {
+    display: flex;
+    align-items: center;
+}
+
+/* @media print {
+    body {
+        background: #fff;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 21cm;
+        min-height: 29.7cm;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .invoice {
+        padding: 2cm;
+        box-sizing: border-box;
+    }
+
+    .logo {
+        width: 4cm;
+    }
+
+    .document-type {
+        text-align: right;
+        color: #444;
+    }
+
+    .conditions {
+        font-size: 0.7em;
+        color: #666;
+    }
+
+    .bottom-page {
+        font-size: 0.7em;
+    }
+
+    .addressMySam, .addressDriver {
+        font-size: 14px;
+    }
+
+    .align-right {
+        text-align: right;
+    }
+
+    .align-left {
+        text-align: left;
+    }
+
+    .align-vertical {
+        display: flex;
+        align-items: center;
+    }
+} */

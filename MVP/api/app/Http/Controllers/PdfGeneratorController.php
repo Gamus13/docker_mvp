@@ -129,17 +129,7 @@ class PdfGeneratorController extends Controller
         ]);
     }
 
-
-
-    // public function index()
-    // {
-    //     // Récupérer tous les PDF stockés
-    //     $pdfs = GeneratedPdf::all();
-
-    //     // Retourner une réponse JSON avec les PDF
-    //     return response()->json($pdfs);
-    // }
-
+    // Récupérer tous les PDF creer par un utilisateur
     public function index()
     {
         // Récupérer tous les PDF stockés pour l'utilisateur authentifié

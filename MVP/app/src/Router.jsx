@@ -32,6 +32,12 @@ import ContactLink from './components/ContactLink';
 import BlogList from './components/BlogList';
 import AboutPageList from './components/AboutPageList';
 import BlogDetailsList from './components/BlogDetailsList';
+import Card from './components/Card';
+import HowItWorks from './components/HowItWorks';
+import Faqnav from './components/Faqnav';
+import Template from './components/Template';
+import UserGreeting from './components/UserGreeting';
+import GoogleCallback from './components/GoogleCallback';
 
 const router = createBrowserRouter([
 
@@ -64,12 +70,28 @@ const router = createBrowserRouter([
         element: <PricingFooter />, 
       },
       {
+        path: '/app/faq',
+        element: <Faqnav />, 
+      },
+      {
+        path: '/app/howItWorks',
+        element: <HowItWorks />, 
+      },
+      {
+        path: '/app/beautifulWorks',
+        element: <Template />, 
+      },
+      {
         path: '/app/auth/signin',
         element: <RegisteList/>,
       },
       {
         path: '/app/auth/signup',
         element: <AuthentificationList />,
+      },
+      {
+        path: '/app/auth/google',
+        element: <GoogleCallback />,
       },
 
       {
@@ -129,12 +151,16 @@ const router = createBrowserRouter([
         children: [
           // route pour le dashboard user
           {
+            path: '/app/profile/',    
+            element: <UserGreeting/>,
+          },
+          {
             path: '/app/profile/home',    
             element: <HomeUser/>,
           },
           {
             path: '/app/profile/subscriptions',    
-            element: <Pricing/>,
+            element: <Card/>,
           },
           {
             path: '/app/profile/customer-service',    
@@ -143,9 +169,10 @@ const router = createBrowserRouter([
           },
           {
             path: '/app/profile/status_pricing',    
-            element: <ProfilePage/>,
+            element: <Card/>,
             
           },
+          
         ],
       },
       {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Invoice</title>
+    <title>{{ __('invoice.title') }}</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,23 +25,23 @@
                             <p>Logo</p>
                         </div>
                         <div class="invoice-head-top-right text-end">
-                            <h3>Invoice</h3>
+                            <h3>{{ __('invoice.title') }}</h3>
                         </div>
                     </div>
                     <div class="hr"></div>
                     <div class="invoice-head-middle">
                         <div class="invoice-head-middle-left text-start">
-                            <p><span class="text-bold">Date de facture</span>: {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
+                            <p><span class="text-bold">{{ __('invoice.date') }}</span>: {{ \Carbon\Carbon::now()->format('d F Y') }}</p>
                         </div>
                         <div class="invoice-head-middle-right text-end">
-                            <p><span class="text-bold">Invoice No:</span> {{ $data['invoice']['invoice_number'] }}</p>
+                            <p><span class="text-bold">{{ __('invoice.invoice_number') }}:</span> {{ $data['invoice']['invoice_number'] }}</p>
                         </div>
                     </div>
                     <div class="hr"></div>
                     <div class="invoice-head-bottom">
                         <div class="invoice-head-bottom-left">
                             <ul>
-                                <li class="text-bold">Invoiced To:</li>
+                                <li class="text-bold">{{ __('invoice.invoiced_to') }}:</li>
                                 <li>{{ $data['invoice']['client_details']['name'] }}</li>
                                 <li>{{ $data['invoice']['client_details']['address'] }}</li>
                                 <li>{{ $data['invoice']['client_details']['postal_code'] }}</li>
@@ -50,7 +50,7 @@
                         </div>
                         <div class="invoice-head-bottom-right">
                             <ul class="text-end">
-                                <li class="text-bold">Pay To:</li>
+                                <li class="text-bold">{{ __('invoice.pay_to') }}:</li>
                                 <li>{{ $data['invoice']['company_details']['name'] }}</li>
                                 <li>{{ $data['invoice']['company_details']['address'] }}</li>
                                 <li>{{ $data['invoice']['company_details']['postal_code'] }}</li>
@@ -64,11 +64,11 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <td class="text-bold">Service</td>
-                                    <td class="text-bold">Description</td>
-                                    <td class="text-bold">Rate</td>
-                                    <td class="text-bold">QTY</td>
-                                    <td class="text-bold text-end">Amount</td>
+                                    <td class="text-bold">{{ __('items.service') }}</td>
+                                    <td class="text-bold">{{ __('items.description') }}</td>
+                                    <td class="text-bold">{{ __('items.rate') }}</td>
+                                    <td class="text-bold">{{ __('items.quantity') }}</td>
+                                    <td class="text-bold text-end">{{ __('items.amount') }}</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -85,22 +85,22 @@
                         </table>
                         <div class="invoice-body-bottom">
                             <div class="invoice-body-info-item border-bottom">
-                                <div class="info-item-td text-end text-bold">Sub Total(excl. tax):</div>
+                                <div class="info-item-td text-end text-bold">{{ __('invoice.subtotal') }}:</div>
                                 <div class="info-item-td text-end">{{ $data['invoice']['totals']['subtotal'] }}$</div>
                             </div>
                             <div class="invoice-body-info-item border-bottom">
-                                <div class="info-item-td text-end text-bold">Tax:</div>
+                                <div class="info-item-td text-end text-bold">{{ __('invoice.tax') }}:</div>
                                 <div class="info-item-td text-end">{{ $data['invoice']['totals']['tax'] }}%</div>
                             </div>
                             <div class="invoice-body-info-item">
-                                <div class="info-item-td text-end text-bold">Total (incl. tax):</div>
+                                <div class="info-item-td text-end text-bold">{{ __('invoice.total') }}:</div>
                                 <div class="info-item-td text-end">{{ $data['invoice']['totals']['total'] }}$</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="invoice-foot text-center">
-                    <p><span class="text-bold">NOTE:&nbsp;</span>This is a computer-generated receipt and does not require a physical signature.</p>
+                    <p><span class="text-bold">{{ __('invoice.note') }}&nbsp;</span>{{ __('invoice.note_content') }}</p>
                 </div>
             </div>
         </div>

@@ -90,6 +90,14 @@ import "../index.css";
 import DescriptionTitle from "./Common/descriptionTitle";
 import { ThemeContext } from '../contexts/ThemeContext';
 import Carousel from './HostingComponent';
+import FeaturesSection from './FeaturesSection';
+import DemarquezVous from './DemarquezVous';
+import DemarquezVousDroite from './DemarquezVousDroite';
+import DocxtalkComparison from './Comparison';
+import Hero from './Hero';
+import Collabration from './Collabration';
+import Services from './Services';
+import Details from './Details';
 
 export default function HowItWorks() {
   const screenWidth = typeof window !== "undefined" ? window.innerWidth : 1024;
@@ -99,43 +107,22 @@ export default function HowItWorks() {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div className="pb-28 pt-32 text-white" id="process overflow-hidden">
+    <div className="pb-28 pt-32 text-white" id="howItWorks">
       <DescriptionTitle
-        description="How does it work?"
+        description="HowItWorks"
         center
       />
-      <div className="mx-12 flex flex-col mt-8 items-center justify-evenly lg:flex-row lg:gap-20">
-        <AnimationComponentLeft>
-          <div className="flex flex-col lg:w-[606px]">
-            <span className="text-sm font-bold text-sky-400">HOW WE WORK</span>
-            <h1 className={`${theme === 'dark' ? 'text-white mt-4 text-3xl font-bold md:text-5xl' : 'text-black mt-4 text-3xl font-bold md:text-5xl'}`}>
-             From creating with AI to personalizing with you: Discover our process.
-            </h1>
-          </div>
-        </AnimationComponentLeft>
-        <AnimationComponentRight>
-          <div className="flex translate-y-8 flex-col lg:max-w-[500px]">
-            <p className={`${theme === 'dark' ? 'text-white mt-4 text-lg font-extralight opacity-80 md:text-xl' : 'text-black mt-4 text-lg   md:text-xl'}`}>
-              Our document generator uses artificial intelligence to quickly create high-quality content. 
-              Using advanced algorithms, we analyze your needs to produce a document that meets your expectations. 
-              Then, our user-friendly interface allows you to easily customize the text, add images or logos, and choose the layout that suits you, giving you the ability to create a unique document with ease.
-            </p>
-            <a href="#pricing">
-              <Button text="registration" className="mt-10 h-[56px] w-36 px-2 bg-sky-400 text-white" />
-            </a>
-          </div>
-        </AnimationComponentRight>
-      </div>
-      
-      {/* Espacement du Carousel */}
-      <div className="mt-16  w-full style={cardStyle}">
-        <Carousel />
-      </div>
-      
-      <div className="mx-auto mt-6 max-w-screen-xl px-12 flex flex-col items-start justify-center md:mt-52 md:flex-row">
+      {/* <FeaturesSection/> */}
+      {/* <DemarquezVous/>
+      <DemarquezVousDroite/> */}
+      <Hero/>
+      <Collabration />
+      {/* <Services/> */}
+      <Details/>
+      {/* <div className="mx-auto mt-6 max-w-screen-xl px-12 flex flex-col items-start justify-center md:mt-52 md:flex-row">
         {designData.map((item, index) => (
           <FadeOnScroll key={index} delay={index * 0.2}>
-            <div className="flex-1 px-4"> {/* Padding interne maintenu */} 
+            <div className="flex-1 px-4"> 
               <div className="flex items-center justify-start">
                 <div className="flex size-12 items-center justify-center rounded-full text-white bg-sky-400 md:mb-4 lg:size-20">
                   <img
@@ -158,7 +145,7 @@ export default function HowItWorks() {
             </div>
           </FadeOnScroll>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

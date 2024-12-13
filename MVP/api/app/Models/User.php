@@ -25,9 +25,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'email_verified_at', // Fillable since we will manually add it on Sign on
         'password',
         'google_id',
         'role',
+        'avatar', // Added
     ];
 
     /**
@@ -57,6 +59,12 @@ class User extends Authenticatable
     public function documents(): HasMany
     {
         return $this->hasMany(ObjetDocument::class);
+    }
+
+    // Récupérer le dernier document créé
+    public function getLastDocumentTypeAttribute()
+    {
+        return $this->documents()->latest()->value('document_type');
     }
 
     // Relation avec les PDF
@@ -126,13 +134,21 @@ class User extends Authenticatable
         return $this->hasMany(PdfRecord::class);
     }
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
+    // public function payments()
+    // {
+    //     return $this->hasMany(Payment::class);
+    // }
 
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Get the sub that owns the user.
+     */
+    public function plan()
+    {
+        return $this->hasOne(Plan::class, 'id', 'plan_id');
     }
 }

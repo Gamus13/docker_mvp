@@ -1,8 +1,7 @@
 import React from 'react'
 import Footer from './Footer'
 import TermsUse from './TermsUse'
-import Header2 from './Header/Nav2'
-import Header from './Header/Nav'
+import Header from './Header'
 
 function TOS() {
     return (

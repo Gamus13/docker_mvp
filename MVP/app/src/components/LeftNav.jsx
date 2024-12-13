@@ -58,7 +58,7 @@ function LeftNav() {
           </span>
         </span>
 
-        <div className={`rounded w-full py-2 px-4 text-xs flex gap-4 items-center justify-between cursor-pointer transition-all duration-300 ${darkMode ? 'bg-gray-800 opacity-70 text-white' : 'bg-gray-200 text-black'}`}>
+        {/* <div className={`rounded w-full py-2 px-4 text-xs flex gap-4 items-center justify-between cursor-pointer transition-all duration-300 ${darkMode ? 'bg-gray-800 opacity-70 text-white' : 'bg-gray-200 text-black'}`}>
           <div className="flex items-center gap-2 text-sm">
             <span>you</span>
             <FiMessageCircle className={`text-2xl ${!darkMode && 'text-gray-600'}`} />
@@ -73,7 +73,7 @@ function LeftNav() {
             <RiMicFill className={`text-2xl ${darkMode && 'text-gray-500'}`} />
             <span>company</span>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

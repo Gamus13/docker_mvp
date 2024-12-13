@@ -30,7 +30,7 @@ const Blog = () => {
     <>
       <Breadcrumb
         pageName="Blog Grid"
-        description="Welcome to the official Docxtalk blog! Here, we share ideas, tips, and resources to help you get the most out of our innovative solution that lets you talk with your PDF documents."
+        description="Welcome to the official Docxtalk blog! Here we share ideas, tips, and resources to help you get the most out of our innovative solution for generating, editing, and sending your company’s documents."
         className={isDarkMode ? "text-white bg-gray-900" : "text-black bg-gray-100"}
       />
 

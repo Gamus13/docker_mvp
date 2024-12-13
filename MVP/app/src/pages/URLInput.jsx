@@ -48,7 +48,7 @@ const URLInput = () => {
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="http://example.com"
-          className="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
+          className="p-2 border border-gray-300 rounded-md text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 w-full"
         />
 
         {/* Afficher l'animation ou le message de réussite */}

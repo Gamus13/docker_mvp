@@ -1,19 +1,21 @@
 import React from 'react'
-import Header from './Header/Nav';
 import Footer from './Footer';
 
 import SigninPage from '../app/signin/page';
-import Header2 from './Header/Nav2';
 import Footer2 from './Footer2';
+import Header from './Header';
+import SignIn from './SignIn';
+import GoogleCallback from './GoogleCallback';
 
 
 
 function AuthentificationList() {
     return (
         <>
-            <Header2/>
+            {/* <Header/> */}
             <SigninPage/>
-            <Footer2/>
+            {/* <SignIn/> */}
+            {/* <Footer2/> */}
         </>
     );
 };

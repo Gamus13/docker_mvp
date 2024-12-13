@@ -18,6 +18,9 @@ use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\DocumentTranslationController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TranslationController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PlanController;
 
 
 Route::get('/user', function (Request $request) {
@@ -29,7 +32,8 @@ Route::get('/movies', [MovieController::class, 'index']);
 Route::post('/create-movie', [MovieController::class, 'store']);
 
 
-
+Route::get('/checkout/success', [PaymentController::class, 'success'])->name('checkout.success');
+Route::get('/checkout/cancel', [PaymentController::class, 'cancel'])->name('checkout.cancel');
 
 
 
@@ -56,6 +60,8 @@ Route::get('/cleaned-json', [PdfGeneratorController::class, 'generatePDF']);
 
 Route::get('/google/redirect', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.redirect');
 Route::get('/google/callback', [GoogleLoginController::class, 'handleGoogleCallback'])->name('google.callback');
+Route::get('auth', [GoogleLoginController::class, 'redirectToAuth']);
+Route::get('auth/callback', [GoogleLoginController::class, 'handleAuthCallback']);
 
 // route pour le programtic seo
 Route::post('/topics', [TopicController::class, 'store']);
@@ -69,6 +75,7 @@ Route::post('/register', [AuthController::class, 'register'])->middleware('web')
 Route::post('/google-login', [AuthController::class, 'handleGoogleLogin']);
 Route::post('/send-email', [MailSenderController::class, 'sendEmail']);
 Route::post('/send-emailcreate', [MailController::class, 'sendEmail']);
+Route::post('/queue-email', [MailController::class, 'queueEmail']);
 Route::post('/upload', [UserPdfGenerateController::class, 'upload']);
 
 
@@ -80,6 +87,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+
     Route::post('/objet-document', [ObjetDocumentController::class, 'store']);
     Route::post('/convert-url-to-pdf', [UrlPdfController::class, 'convert']);
     Route::post('/fileusers', [UserPdfController::class, 'upload']);
@@ -93,7 +101,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/Userpdfs', [UserPdfGenerateController::class, 'index']);
 
     Route::get('/pdfs/user/{userId}', [PdfGeneratorController::class, 'getAllUserPdfs']);
-
     Route::get('/pdfs', [PdfGeneratorController::class, 'index'])->name('pdfs.index');
     Route::get('/pdfsupdate', [PdfGeneratorController::class, 'indexupdate'])->name('pdfs.indexupdate');
     Route::get('/generate-pdfs/{userId}', [PdfGeneratorController::class, 'generateMultiplePdfsFromTemplates']);
@@ -121,4 +128,19 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/posts/{id}', [PostController::class, 'show']);
     Route::get('/tags', [PostController::class, 'getTags']); // Pour récupérer les tags
     Route::post('/posts', [PostController::class, 'store']);
+
+    Route::post('/translate-json', [TranslationController::class, 'translateJson']);
+    Route::get('/translatedocx', [TranslationController::class, 'indextranslate']);
+
+    // stripe route
+
+    Route::get('/plans', [PlanController::class, 'getPlans']);
+    Route::post('/checkout/{id}', [PaymentController::class, 'checkout']);
+    Route::post('/plan', [PlanController::class, 'createPlan']);
+
+    Route::get('/user-greeting', [AuthController::class, 'getUserGreeting']);
+
+    Route::get('/alluser-greeting', [AuthController::class, 'getAllUserGreetings']);
+
+
 });

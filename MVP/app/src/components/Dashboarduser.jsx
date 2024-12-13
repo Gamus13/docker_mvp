@@ -17,6 +17,7 @@ function DashboardUser() {
             {/* Contenu dynamique */}
             <div className="flex-1 overflow-y-auto">
                 <HeaderUser/>
+                
                 <Outlet /> {/* Affiche le composant en fonction de la route */}
             </div>
         </div>

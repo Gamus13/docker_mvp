@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../components/Header/Nav'
 import LandingPage from '../components/Video'
 import HowItWorks from '../components/FeaturesProcess'
 import BeautifulWorks from '../section/BeautifulWorks'
@@ -10,6 +9,7 @@ import Contact from '../components/Contact'
 import CTA from '../components/About/CTA'
 import Footer from '../components/Footer'
 import HowItWorks2 from '../components/FeaturesProcess2'
+import Header from '../components/Header'
 
 function WebsiteSeo() {
     return (

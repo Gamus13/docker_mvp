@@ -96,7 +96,7 @@ function TermsUse() {
         <br />
         <ul className='mb-4'>
             <li>Email : support@docxtalk.com</li>
-            <li>Address: 123 Rue de l’Entreprise,Yaoundé, Cameroun</li>
+            {/* <li>Address: 123 Rue de l’Entreprise,Yaoundé, Cameroun</li> */}
         </ul>
         </p>
         <hr />

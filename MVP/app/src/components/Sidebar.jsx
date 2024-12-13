@@ -109,7 +109,7 @@ const Sidebar = () => {
           onClick={() => handleNavigation('/app/profile/mails')}
         >
           <HiMail size={26} />
-          <p className="font-medium text-md cursor-pointer">Suivi des mails</p>
+          <p className="font-medium text-md cursor-pointer">Email tracking</p>
         </div>
 
         {/* Customer Services */}

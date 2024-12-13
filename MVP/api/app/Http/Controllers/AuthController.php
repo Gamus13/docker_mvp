@@ -8,9 +8,11 @@ use App\Http\Resources\UserResource;
 use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Exception;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Laravel\Socialite\Facades\Socialite;
 use Laravel\Sanctum\PersonalAccessToken;
 use Illuminate\Validation\ValidationException;
 use Google_Client;
@@ -46,6 +48,28 @@ class AuthController extends Controller {
     //         'expires_at' => $expiresAt->toDateTimeString(), // Inclure la date d'expiration dans la réponse
     //     ], 201);
     // }
+
+
+    // public function register(Request $request)
+    // {
+    //     $request->validate([
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|string|email|max:255|unique:users',
+    //         'password' => 'required|string|min:8|confirmed',
+    //     ]);
+
+    //     $user = User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password),
+    //     ]);
+
+    //     return response()->json([
+    //         'message' => 'User registered successfully',
+    //         'user' => $user
+    //     ], 201);
+    // }
+
     public function register(Request $request)
     {
         $request->validate([
@@ -68,7 +92,6 @@ class AuthController extends Controller {
             'user' => $user
         ], 201);
     }
-
 
 
     // login a user method
@@ -102,6 +125,37 @@ class AuthController extends Controller {
     //         'expires_at' => $expiresAt->toDateTimeString(), // Inclure la date d'expiration dans la réponse
     //     ]);
     // }
+
+    // public function login(Request $request)
+    // {
+    //     $request->validate([
+    //         'email' => 'required|email',
+    //         'password' => 'required'
+    //     ]);
+
+    //     // Vérifier si les identifiants sont corrects
+    //     if (!Auth::attempt($request->only('email', 'password'))) {
+    //         throw ValidationException::withMessages([
+    //             'email' => ['The provided credentials are incorrect.'],
+    //         ]);
+    //     }
+
+    //     // Récupérer l'utilisateur authentifié
+    //     $user = Auth::user();
+
+    //     // Créer le token avec une expiration d'un jour
+    //     $token = $user->createToken('auth_token')->plainTextToken;
+    //     $expiresAt = now()->addDays(1);
+
+    //     return response()->json([
+    //         'message' => 'User logged in successfully',
+    //         'user' => $user, // Inclure les informations de l'utilisateur
+    //         'access_token' => $token,
+    //         'token_type' => 'Bearer',
+    //         'expires_at' => $expiresAt->toDateTimeString(),
+    //     ]);
+    // }
+
     public function login(Request $request)
     {
         $request->validate([
@@ -118,6 +172,11 @@ class AuthController extends Controller {
 
         // Récupérer l'utilisateur authentifié
         $user = Auth::user();
+
+        // Mettre à jour les informations utilisateur
+        $user->increment('visit_count'); // Incrémenter le compteur de visites
+        $user->last_login_at = now(); // Mettre à jour la dernière connexion
+        $user->save();
 
         // Créer le token avec une expiration d'un jour
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -262,85 +321,91 @@ class AuthController extends Controller {
         }
     }
 
-    // public function handleGoogleLogin(Request $request)
-    // {
-    //     // Valider les données reçues
-    //     $validatedData = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|string|email|max:255|unique:users,email', // Vérifie si l'email est unique
-    //         'googleId' => 'required|string|unique:users,google_id', // L'identifiant Google doit être unique
-    //     ]);
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
 
-    //     // Créer ou mettre à jour l'utilisateur
-    //     try {
-    //         $user = User::updateOrCreate(
-    //             ['email' => $validatedData['email']], // Si l'utilisateur existe déjà avec cet email, on le met à jour
-    //             [
-    //                 'name' => $validatedData['name'],
-    //                 'google_id' => $validatedData['googleId'],
-    //                 'password' => Hash::make(uniqid()), // Générer un mot de passe aléatoire car l'utilisateur ne l'utilisera pas
-    //             ]
-    //         );
-
-    //         // Connecter l'utilisateur automatiquement
-    //         auth()->login($user);
-
-    //         // Répondre avec succès
-    //         return response()->json([
-    //             'message' => 'User logged in successfully',
-    //             'user' => $user
-    //         ], 200);
-
-    //     } catch (\Exception $e) {
-    //         return response()->json([
-    //             'error' => 'Failed to process login',
-    //             'details' => $e->getMessage(),
-    //         ], 500);
-    //     }
-    // }
-    public function handleGoogleLogin(Request $request)
+    public function redirectToGoogle()
     {
-        // Valider les données reçues
-        $validatedData = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email', // Vérifie si l'email est unique
-            'googleId' => 'required|string|unique:users,google_id', // L'identifiant Google doit être unique
-        ]);
+        return Socialite::driver('google')->redirect();
+    }
 
-        // Créer ou mettre à jour l'utilisateur
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+
+    public function handleGoogleCallback()
+    {
         try {
-            $user = User::updateOrCreate(
-                ['email' => $validatedData['email']], // Si l'utilisateur existe déjà avec cet email, on le met à jour
-                [
-                    'name' => $validatedData['name'],
-                    'google_id' => $validatedData['googleId'],
-                    'password' => Hash::make(uniqid()), // Générer un mot de passe aléatoire car l'utilisateur ne l'utilisera pas
-                ]
-            );
 
-            // Connecter automatiquement l'utilisateur
-            Auth::login($user);
+            $user = Socialite::driver('google')->user();
+            $finduser = User::where('google_id', $user->id)->first();
 
-            // Générer un token d'authentification avec Sanctum
-            $token = $user->createToken('auth_token')->plainTextToken;
+            if($finduser){
 
-            // Optionnel: créer un cookie pour stocker le token (exemple: pour une SPA)
-            $cookie = cookie('token', $token, 60 * 24); // 1 jour
+                Auth::login($finduser);
+                return redirect()->intended('home');
 
-            // Répondre avec succès et retourner le token
-            return response()->json([
-                'message' => 'User logged in successfully',
-                'user' => $user,
-                'token' => $token // Inclure le token dans la réponse
-            ])->withCookie($cookie); // Retourner aussi le cookie si nécessaire
+            }else{
+                $newUser = User::updateOrCreate(['email' => $user->email],[
+                        'name' => $user->name,
+                        'google_id'=> $user->id,
+                        'password' => encrypt('123456dummy')
+                    ]);
 
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => 'Failed to process login',
-                'details' => $e->getMessage(),
-            ], 500);
+                Auth::login($newUser);
+
+                return redirect()->intended('home');
+            }
+
+        } catch (Exception $e) {
+            dd($e->getMessage());
         }
     }
+
+    // methode pour recuperer les dernieres visites des utilisateurs et leur nombre
+    public function getUserGreeting()
+    {
+        $user = Auth::user();
+
+        // Récupération des informations utilisateur
+        $lastVisit = $user->last_login_at; // Supposez que vous avez une colonne `last_login_at`
+        $lastDocument = $user->last_document_type; // Supposez que vous avez une colonne `last_created_document`
+        $visitCount = $user->visit_count; // Supposez que vous avez une colonne `visit_count`
+
+        return response()->json([
+            'name' => $user->name,
+            'last_visit' => $lastVisit,
+            'last_document' => $lastDocument,
+            'visit_count' => $visitCount,
+        ]);
+    }
+
+
+    public function getAllUserGreetings()
+    {
+        // Récupérer tous les utilisateurs avec leurs derniers documents
+        $users = \App\Models\User::with('documents') // Supposez que la relation avec les documents est définie
+            ->get()
+            ->map(function ($user) {
+                // Obtenir le dernier document créé par l'utilisateur
+                $lastDocument = $user->documents->last();
+
+                return [
+                    'name' => $user->name,
+                    'last_visit' => $user->last_login_at,
+                    'last_document' => $lastDocument ? $lastDocument->document_type : null,
+                    'visit_count' => $user->visit_count,
+                ];
+            });
+
+        return response()->json($users);
+    }
+
 
 
 }

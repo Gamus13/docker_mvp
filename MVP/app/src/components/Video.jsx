@@ -1,11 +1,11 @@
+
 import React, { useState, useContext } from "react";
 import { Helmet } from "react-helmet";
-import ModalVideo from "react-modal-video";
 import SectionTitle from "./SectionTitle";
-import { Link, useNavigate } from 'react-router-dom';
-import { ThemeContext } from '../contexts/ThemeContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import { ThemeContext } from '../contexts/ThemeContext';
 import "../index.css";
 
 const LandingPage = () => {
@@ -19,7 +19,7 @@ const LandingPage = () => {
     // Simule une action asynchrone
     setTimeout(() => {
       setIsLoading(false);
-      navigate('/app/generate'); // Redirige vers /tchat après le chargement
+      navigate('/app/auth/signup'); // Redirige vers /tchat après le chargement
     }, 2000);
   };
 
@@ -33,6 +33,7 @@ const LandingPage = () => {
         />
       </Helmet>
 
+    
       <section className={`relative z-10 py-16 md:py-20 mb-16 lg:mb-24 lg:py-28 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
         <SectionTitle
           title="Say goodbye to administrative hassle! Create any document in one click."
@@ -41,45 +42,42 @@ const LandingPage = () => {
           mb="60px"
         />
         <div className="flex flex-col items-center justify-center mb-9 mt-6 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-          
-          
-        <button
-          onClick={handleButtonClick}
-          className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5 glow-button"
-          disabled={isLoading} // Désactiver le bouton pendant le chargement
-        >
-          {isLoading ? (
-            <svg
-              className="animate-spin h-5 w-5 text-white inline-block"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-              ></path>
-            </svg>
-          ) : (
-            <>
-              
-              Try for Free
-              <FontAwesomeIcon icon={faArrowRight} className="text-white ml-2" />
-            </>
-          )}
-        </button>
+          <button
+            onClick={handleButtonClick}
+            className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5 glow-button"
+            disabled={isLoading} // Désactiver le bouton pendant le chargement
+          >
+            {isLoading ? (
+              <svg
+                className="animate-spin h-5 w-5 text-white inline-block"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                ></path>
+              </svg>
+            ) : (
+              <>
+                Try for Free
+                <FontAwesomeIcon icon={faArrowRight} className="text-white ml-2" />
+              </>
+            )}
+          </button>
         </div>
-        
-        <div className="container ">
+
+        <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 mt-8">
               <div className="mx-auto max-w-[770px] overflow-hidden rounded-md">
@@ -106,20 +104,23 @@ const LandingPage = () => {
                       </svg>
                     </button>
                   </div>
+                  
+                  {/* Afficher la vidéo dans la même div en utilisant un iframe */}
+                  {isOpen && (
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full"
+                      src="https://www.youtube.com/embed/L61p2uyiMSo?autoplay=1"
+                      title="Video"
+                      frameBorder="0"
+                      allow="autoplay; encrypted-media"
+                      allowFullScreen
+                    ></iframe>
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <ModalVideo
-          channel="youtube"
-          autoplay={true}
-          start={true}
-          isOpen={isOpen}
-          videoId="L61p2uyiMSo"
-          onClose={() => setOpen(false)}
-        />
 
         <div className="absolute bottom-0 left-0 right-0 z-[-1] h-full w-full bg-[url(/images/video/shape.svg)] bg-cover bg-center bg-no-repeat"></div>
       </section>

@@ -4,8 +4,8 @@ services:
   postgres-db:
     container_name: postgres-db
     build:
-      context: ./postgres  # Le chemin doit être vers le dossier contenant Dockerfile
-      dockerfile: Dockerfile  # Assurez-vous que le nom du fichier est correct
+      context: ./postgres
+      dockerfile: Dockerfile
     environment:
       POSTGRES_DB: bddocxtalk
       POSTGRES_USER: postgres
@@ -14,7 +14,7 @@ services:
       - db_data:/var/lib/postgresql/data
     networks:
       - netcon
-    restart: unless-stopped  
+    restart: unless-stopped   
 
   pgadmin:
     container_name: pgadmin
@@ -29,19 +29,22 @@ services:
     restart: unless-stopped
 
   php-app:
-    build: ./api
-    image: 8.1-fpm
+    build:
+      context: ./api
+      dockerfile: Dockerfile
     container_name: php-app
+    user: "${UID}:${GID}" # Utilise l'utilisateur de l'hôte
     volumes:
-      - ./api:/var/www/html  
+      - ./api:/var/www/html   
       - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini 
+      - ./api/storage:/var/www/html/storage
     depends_on:
       - postgres-db
     networks:
       - netcon
-    restart: unless-stopped  
-    command:
-      sh -c "php artisan migrate && php artisan serve --host=0.0.0.0"
+    restart: unless-stopped   
+    entrypoint: ["/usr/local/bin/entrypoint.sh"]
+    command: ["sh", "-c", "php artisan migrate && php artisan serve --host=0.0.0.0"]
 
   web-app:
     build: ./app
@@ -67,7 +70,7 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "80:80"
-      - "443:443" # Si vous utilisez SSL
+      - "443:443"
     depends_on:
       - php-app
       - web-app

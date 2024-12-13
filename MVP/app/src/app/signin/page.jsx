@@ -3,6 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { ThemeContext } from '../../contexts/ThemeContext';
 import axios from '../../axios';
 import { useAuth } from '../../contexts/AuthContext';
+import SignIn from '../../components/SignIn';
 
 const SigninPage = () => {
   const { theme } = useContext(ThemeContext);
@@ -138,7 +139,7 @@ const SigninPage = () => {
                       </defs>
                     </svg>
                   </span>
-                  Sign in with Google
+                  <SignIn/>
                 </button>
 
                 <div className="mb-8 flex items-center justify-center">

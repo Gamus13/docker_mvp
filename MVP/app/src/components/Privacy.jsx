@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from './Header/Nav'
 import Footer from './Footer'
 import ConditionUse from './conditionUse'
+import Header from './Header'
 
 function Privacy() {
     return (

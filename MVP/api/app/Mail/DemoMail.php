@@ -36,13 +36,26 @@ class DemoMail extends Mailable
     /**
      * Get the message content definition.
      */
+    // public function content(): Content
+    // {
+    //     return new Content(
+    //         view: 'emails.demoMail',
+    //         with: $this->mailData
+    //     );
+    // }
+
     public function content(): Content
     {
+        $view = isset($this->mailData['queued']) && $this->mailData['queued']
+            ? 'emails.queuedMail'
+            : 'emails.demoMail';
+
         return new Content(
-            view: 'emails.demoMail',
+            view: $view,
             with: $this->mailData
         );
     }
+
 
     /**
      * Get the attachments for the message.

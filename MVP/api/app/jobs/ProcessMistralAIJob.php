@@ -59,16 +59,38 @@ class ProcessMistralAIJob implements ShouldQueue
             return;
         }
 
+        // // Construction du template pour l'API Mistral
+        // $system_template = <<<EOT
+        // Utilisez le JSON ci-dessous comme modèle et remplissez chaque champ avec les informations pertinentes du contexte fourni si tu ne trouves pas d'information n'invente rien, marque juste "à remplir".
+        // Assurez-vous que le JSON retourné soit correctement formaté, sans texte supplémentaire, qu'il soit complet et qu'il n'y ait aucun caractère d'échappement (comme \) utilisé.
+
+        // Le JSON doit être entièrement complété sans aucun texte partiel ou caractères non autorisés.
+
+        // Contexte : {context}
+        // JSON à remplir : {jsondocxusers}
+        // EOT;
+
         // Construction du template pour l'API Mistral
         $system_template = <<<EOT
-        Utilisez le JSON ci-dessous comme modèle et remplissez chaque champ avec les informations pertinentes du contexte fourni si tu ne trouves pas d'information n'invente rien, marque juste "à remplir".
-        Assurez-vous que le JSON retourné soit correctement formaté, sans texte supplémentaire, qu'il soit complet et qu'il n'y ait aucun caractère d'échappement (comme \) utilisé.
+        Vous devez compléter uniquement la section `company_details` du JSON fourni en utilisant les informations disponibles dans le contexte.
 
-        Le JSON doit être entièrement complété sans aucun texte partiel ou caractères non autorisés.
+        ### Instructions :
+        1. Remplissez chaque champ trouvé dans la section `company_details` avec les informations pertinentes disponibles dans le contexte.
+        2. Si une information est manquante dans le contexte, écrivez `"à remplir"`.
+        3. Retournez uniquement le JSON complété, sans aucun texte supplémentaire ou caractère d'échappement.
 
-        Contexte : {context}
-        JSON à remplir : {jsondocxusers}
+        ### Contexte :
+        {context}
+
+        ### JSON modèle :
+        {jsondocxusers}
+
+        ### Exigences :
+        - Complétez tous les champs existants dans `company_details`, peu importe leur nom ou leur structure.
+        - Assurez-vous que le JSON retourné soit correctement formaté, valide, et sans aucun texte superflu.
+
         EOT;
+
 
         // Remplacement des placeholders dans le template
         $system_prompt = str_replace(

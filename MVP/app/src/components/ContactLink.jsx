@@ -1,7 +1,7 @@
 import React from 'react'
-import Header from './Header/Nav'
 import Contact from './Contact'
 import Footer from './Footer'
+import Header from './Header'
 
 function ContactLink() {
     return (
