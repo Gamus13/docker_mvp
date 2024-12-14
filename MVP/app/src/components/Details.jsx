@@ -8,9 +8,9 @@ function Details() {
     const { theme } = useContext(ThemeContext);
   return (
     <>
-      <DescriptionTitle description="Features" center />
-      <Section id="features" className="mt-20">
-        <div className="grid grid-rows-3 grid-flow-col gap-4">
+      <DescriptionTitle description="Features" center  className="mt-10"/>
+      <>
+        <div className="grid grid-rows-3 grid-flow-col gap-4 mt-20">
           {/* Première section */}
           <div
             id="details"
@@ -85,7 +85,7 @@ function Details() {
             </p>
           </div>
         </div>
-      </Section>
+      </>
     </>
   );
 }

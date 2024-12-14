@@ -20,7 +20,7 @@ import AdminBlog from './components/Admin/AdminBlog';
 import DashboardUser from './components/Dashboarduser';
 import TopicPage from './components/TopicPage';
 import WebsiteSeo from './pages/WebsiteSeo';
-import Contact from './components/Contact';
+import Contact from './components/Contact'; 
 import Contact2 from './components/Contact/index2';
 import SubscriptionPage from './components/CheckoutForm';
 import Pricing from './components/CheckoutForm';

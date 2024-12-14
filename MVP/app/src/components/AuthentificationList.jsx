@@ -12,10 +12,10 @@ import GoogleCallback from './GoogleCallback';
 function AuthentificationList() {
     return (
         <>
-            {/* <Header/> */}
+            <Header/>
             <SigninPage/>
             {/* <SignIn/> */}
-            {/* <Footer2/> */}
+            <Footer2/>
         </>
     );
 };
