@@ -77,53 +77,58 @@ const Pricing = () => {
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           <PricingBox
             packageName="Individuals"
-            originalPrice={isMonthly ? "38,50" : "0"} // Prix barré
-            price={isMonthly ? "20,63" : "0"}
+            originalPrice={isMonthly ? "20,63" : "123,78"} // Prix barré
+            price={isMonthly ? "10,32" : "247,56"}
             duration={isMonthly ? "mo" : "yr"}
             subtitle="For individuals and entrepreneurs with basic document generation and editing needs"
           >
-            <OfferList text="5 pages per PDF" status="active" />
-            <OfferList text="4MB file size limit" status="desactive" />
-            <OfferList text="Mobile-friendly interface" status="active" />
-            <OfferList text="20 questions / day" status="active" />
-            <OfferList text="24 hour chat history" status="active" />
+            <OfferList text="Generating, editing, without electronic signature" status="active" />
+            <OfferList text="Limited to 1 user" status="active" />
+            <OfferList text="Document tracking (confirmation of sending and opening)" status="active" />
+            <OfferList text="50 documents/month" status="active" /> 
+            <OfferList text="Access to support by email only (response within 48 hours)" status="active" />
+            <OfferList text="Backing up documents with standard encryption" status="active" />
           </PricingBox>
 
           <PricingBox
             packageName="Standard"
-            originalPrice={isMonthly ? "15" : "120"} // Prix barré
-            price={isMonthly ? "55,37" : "789"}
+            originalPrice={isMonthly ? "27,68" : "332,22"} // Prix barré
+            price={isMonthly ? "55,37" : "664,44"}
             duration={isMonthly ? "mo" : "yr"}
-            subtitle="For small to medium teams who want to generate, edit, send, sign and collaborate on agreements"
+            subtitle="For small to medium teams who want to generate, edit, send, sign and collaborate on agreements via an advanced REST API"
             className="border-2 border-blue-500 rounded-lg shadow-lg relative"
           >
             <span className="absolute top-2 left-2 bg-blue-500 text-white text-xs font-semibold px-2 py-1 rounded">More Popular</span>
-            <OfferList text="25 pages per PDF" status="active" />
-            <OfferList text="16MB file size limit" status="active" />
-            <OfferList text="Mobile-friendly interface" status="active" />
-            <OfferList text="Email Support" status="active" />
-            <OfferList text="Higher-quality responses" status="active" />
-            <OfferList text="Priority support" status="active" />
-            <OfferList text="Downloading the summary of the discussion with the file" status="active" />
+            <OfferList text="Full access to the REST API(generation, sending, tracking and electronic signature)" status="active" />
+            <OfferList text="5,000/month API calls" status="active" />
+            <OfferList text="Up to 10 users" status="active" />
+            <OfferList text="Email and chat support, response within 24 hours." status="active" />
+            <OfferList text="Branding on sent documents (logo and colors)." status="active" />
+            <OfferList text="Exportable reports and GDPR/SOC2 compliance." status="active" />
+            <OfferList text="Follow-up by email and automatic reminders." status="active" /> 
+            <OfferList text="Detailed usage statistics to improve your processes." status="active" />
           </PricingBox>
 
           <PricingBox
             packageName="Premium"
-            originalPrice={isMonthly ? "30" : "240"} // Prix barré
-            price={isMonthly ? "20,15" : "96,72"}
+            originalPrice={isMonthly ? "64,99" : "779,94"} // Prix barré
+            price={isMonthly ? "129,99" : "1 559,88"}
             duration={isMonthly ? "mo" : "yr"}
-            subtitle="Lorem ipsum dolor sit amet adiscing elit Mauris egestas enim."
+            subtitle="Designed for large companies or structures requiring a complete and highly automated solution to manage massive document flows via an advanced REST API and professional management tools."
           >
-            <OfferList text="Unlimited files" status="active" />
-            <OfferList text="Use with Unlimited Projects" status="active" />
-            <OfferList text="Mobile-friendly interface" status="active" />
-            <OfferList text="Unlimited Questions" status="active" />
-            <OfferList text="Email Support" status="active" />
-            <OfferList text="Downloading the summary of the discussion with the file" status="active" />
-            <OfferList text="Lifetime storage of chat history" status="active" />
-            <OfferList text="Access to the discussion with videos and audio" status="active" />
-            <OfferList text="Access to file modification tools" status="active" />
-          </PricingBox>
+            
+            <OfferList text="Full access to the REST API(generation, sending, tracking and electronic signature)" status="active" />
+            <OfferList text="20,000/month API calls" status="active" />
+            <OfferList text="Unlimited users" status="active" />
+            <OfferList text="customer support (email, chat, phone, 24/7)" status="active" />
+            <OfferList text="Complete branding and custom feeds" status="active" />
+            <OfferList text="Rapports exportables et conformité RGPD/SOC2" status="active" />
+            <OfferList text="Automatisation avancée avec Webhooks et audits" status="active" />
+            <OfferList text="Follow-up by email and automatic reminders." status="active" /> 
+            <OfferList text="Granular access management: Roles and permissions (multi-user)." status="active" /> 
+            <OfferList text="Exportable data (CSV, Excel) and personalized dashboards." status="active" />
+            <OfferList text="Automatic backups and long-term archiving of generated documents (legal and historical requirements)." status="active" /> 
+          </PricingBox> 
           
         </div>
       </div>

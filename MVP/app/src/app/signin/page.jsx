@@ -103,7 +103,7 @@ const SigninPage = () => {
                 </h3>
                 
                 <p className={`mb-11 text-center text-base font-medium text-body-color ${isDarkMode ? 'text-gray-500' : 'bg-white'}`}>
-                  Login to your account for a faster checkout.
+                  Log in to your account via Google to start creating your documents
                 </p>
                 <button className={`border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B]   ${isDarkMode ? 'hover:shadow-none text-white hover:text-white bg-gray-800 hover:border-sky-700 hover:bg-sky-700/20' : 'bg-white hover:border-sky-600 hover:text-sky-700'}`}>
                   <span className="mr-3">
