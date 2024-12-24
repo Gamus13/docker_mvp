@@ -79,7 +79,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\DocumentUserController;
+// use App\Http\Controllers\DocumentUserController;
 use App\Models\InformationUser;
 use App\Models\User; // Assurez-vous d'importer le modèle User
 
@@ -134,7 +134,7 @@ class ProcessAIResponseJob implements ShouldQueue
         $responseContent = $response->json()['choices'][0]['message']['content'];
 
         // Appeler la méthode statique du contrôleur pour obtenir l'embedding
-        $embedding = DocumentUserController::getQueryEmbedding($responseContent);
+        // $embedding = DocumentUserController::getQueryEmbedding($responseContent);
 
         // Associer les informations de l'expéditeur à un utilisateur spécifique
         InformationUser::create([
@@ -142,7 +142,7 @@ class ProcessAIResponseJob implements ShouldQueue
             'user_id' => $this->userId, // Associer à un utilisateur
         ]);
 
-        Log::info('Embedding:', ['embedding' => $embedding]);
+        // Log::info('Embedding:', ['embedding' => $embedding]);
     }
 }
 

@@ -77,7 +77,7 @@ class User extends Authenticatable
     // Relation avec les collections d'embedding
     public function embeddingUrlCollections(): HasMany
     {
-        return $this->hasMany(Embeddingurl_collections::class);
+        return $this->hasMany(EmbeddingUrlCollections::class);
     }
 
     // Relation avec les embeddings

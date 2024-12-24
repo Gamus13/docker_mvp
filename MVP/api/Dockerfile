@@ -40,6 +40,7 @@ COPY composer.lock composer.json /var/www/html/
 # Copier tout le projet Laravel
 COPY . /var/www/html
 
+
 # Ajuster les permissions générales des fichiers et dossiers
 RUN find . -type f -exec chmod 644 {} \; && \
     find . -type d -exec chmod 755 {} \; && \

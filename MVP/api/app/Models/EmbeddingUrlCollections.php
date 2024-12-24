@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class Embeddingurl_collections extends Model
+class EmbeddingUrlCollections extends Model
 {
     use HasFactory;
 

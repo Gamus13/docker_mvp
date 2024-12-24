@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Log;
 use App\Jobs\ProcessAIResponseJob;
 use App\Http\Repository\DocumentUserRepository; // Utilisez DocumentUserRepository
 use App\Models\ObjetDocument;
-use App\Http\Controllers\DocumentUserController;
+// use App\Http\Controllers\DocumentUserController;
 use App\Http\Controllers\UserDocumentController;
 
 

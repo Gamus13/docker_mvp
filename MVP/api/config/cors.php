@@ -19,7 +19,9 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['localhost:3000'],
+    'allowed_origins' => [
+        'docx-talk.com',
+    ],
 
     'allowed_origins_patterns' => [],
 

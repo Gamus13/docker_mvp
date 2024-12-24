@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\UrlPdf;
-use App\Models\embeddingurl_collections;
+use App\Models\EmbeddingUrlCollections;
 use App\Models\EmbeddingsUrl;
 use App\Http\Repository\DocumentRepository;
 use Exception;
@@ -53,7 +53,7 @@ class ProcessTextExtraction implements ShouldQueue
             $total_token_embed = 0;
 
             // Créer une nouvelle collection d'embedding
-            $embeddingurl_collections = embeddingurl_collections::create([
+            $embeddingurl_collections = EmbeddingUrlCollections::create([
                 'name' => basename($pdf_path), // Use only the file name
                 'cmetadata' => json_encode([
                     "total_token" => 0,
@@ -63,6 +63,7 @@ class ProcessTextExtraction implements ShouldQueue
                 'user_id' => $this->urlPdf->user_id, // Associer à l'utilisateur
             ]);
             Log::info("Created embeddingurl_collections with ID: " . $embeddingurl_collections->id);
+
 
             // Initialiser le parser de PDF
             $parser = new Parser();
