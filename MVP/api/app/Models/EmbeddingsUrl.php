@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Embeddingsurl extends Model
+class EmbeddingsUrl extends Model
 {
     use HasFactory;
 

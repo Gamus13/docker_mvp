@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 use App\Jobs\ProcessTextExtraction;
 use Illuminate\Support\Facades\Http;
 use App\Models\UrlPdf;
-use App\Models\Embeddingsurl;
+use App\Models\EmbeddingsUrl;
 use App\Models\FinalDataUser;
 use App\Models\ObjetDocument;
 use App\Models\GeneratePdf; // Import du modèle
@@ -89,7 +89,7 @@ class UrlPdfController extends Controller
     public function index()
     {
         // Récupérer tout le contenu de la colonne 'document' de la table 'embeddingsurl'
-        $documents = Embeddingsurl::pluck('document');
+        $documents = EmbeddingsUrl::pluck('document');
 
         // Nettoyer les documents pour retirer ou remplacer les caractères spéciaux
         $cleanedDocuments = $documents->map(function ($document) {

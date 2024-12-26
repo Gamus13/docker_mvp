@@ -8,7 +8,7 @@ use App\Models\UserDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Models\Embeddingsusers;
-use App\Models\Embeddingsurl;
+use App\Models\EmbeddingsUrl;
 use App\Models\FinalDataUser;
 use App\Models\JsonData;
 
@@ -120,7 +120,7 @@ class UserDocumentController extends Controller
 
         if ($userId) {
             // Récupérer les documents du dernier enregistrement de l'utilisateur connecté
-            $documentsUrl = Embeddingsurl::where('user_id', $userId)
+            $documentsUrl = EmbeddingsUrl::where('user_id', $userId)
                 ->orderBy('created_at', 'desc') // Trier par la dernière entrée
                 ->pluck('document') // Récupérer la colonne 'document'
                 ->toArray();
