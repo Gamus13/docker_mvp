@@ -109,7 +109,7 @@ const LandingPage = () => {
                   {isOpen && (
                     <iframe
                       className="absolute top-0 left-0 w-full h-full"
-                      src="https://www.youtube.com/embed/L61p2uyiMSo?autoplay=1"
+                      src="./Docxtalk presentation.mp4"
                       title="Video"
                       frameBorder="0"
                       allow="autoplay; encrypted-media"
