@@ -77,6 +77,7 @@ Route::post('/send-email', [MailSenderController::class, 'sendEmail']);
 Route::post('/send-emailcreate', [MailController::class, 'sendEmail']);
 Route::post('/queue-email', [MailController::class, 'queueEmail']);
 Route::post('/upload', [UserPdfGenerateController::class, 'upload']);
+Route::get('/latest-uploaded-file', [UserPdfGenerateController::class, 'getLatestUploadedFile']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

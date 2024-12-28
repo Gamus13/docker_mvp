@@ -112,4 +112,17 @@ class UserPdfGenerateController extends Controller
         return response()->json($pdfs);
     }
 
+    public function getLatestUploadedFile()
+    {
+        $file = Pdf::where('user_id', Auth::id())->latest()->first(['id', 'filename', 'path']);
+
+        if ($file) {
+            return response()->json($file, 200);
+        }
+
+        return response()->json(['message' => 'Aucun fichier trouvé.'], 404);
+    }
+
+
+
 }
